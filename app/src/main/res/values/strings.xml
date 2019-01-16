@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">kAPPeritivo</string>
+    <string name="titolo_login">Accedi al portale di gestione di APPeritivo</string>
+    <string name="bottone_accesso">Accedi</string>
+    <string name="bottone_creazione">Crea nuovo profilo</string>
+    <string name="bottone_registrati"> Registrati</string>
+    <string name="nome">Nome...</string>
+    <string name="cognome">Cognome...</string>
+    <string name="numtel">Numero di telefono...</string>
+    <string name="conferma_ordine">Conferma</string>
+    <string name="title_activity_conferma_ordine">ConfermaOrdineActivity</string>
+    <string name="conferma">Modifica e Invia ordine</string>
+
+
+</resources>

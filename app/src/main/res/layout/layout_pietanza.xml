@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="50dp"
+    android:background="#3d5afe"
+
+    >
+    <TextView
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/descrizione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nome"
+        android:layout_marginTop="7dp"
+        android:textSize="14dp"
+        android:textColor="#ffffff"/>
+    <TextView
+        android:id="@+id/prezzo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/descrizione"
+        android:layout_alignBottom="@+id/descrizione"
+        android:layout_alignParentRight="true"
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nome"
+        android:layout_alignParentRight="true"
+        android:id="@+id/quantita"
+        android:inputType="number"
+        android:textColor="#ffffff"/>
+
+    />
+</RelativeLayout>
