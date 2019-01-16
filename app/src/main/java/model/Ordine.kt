@@ -8,6 +8,7 @@ class Ordine {
     private var codice: Int=0
     private var tavolo: Int?= null
     private lateinit var cameriere: String
+    private var conto= 0.0
 
 
 
@@ -23,4 +24,12 @@ class Ordine {
     fun getTavolo(): Int? {return tavolo}
 
     fun getCameriere(): String {return cameriere}
+
+    fun setConto(conto: Double) {
+        this.conto = conto
+    }
+
+    fun getConto(): Double {
+        return conto
+    }
 }

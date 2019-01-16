@@ -1,6 +1,6 @@
 package e.melissa.kapperitivo
 
-import Helper.InputValidation
+import helper.InputValidation
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.annotation.SuppressLint
@@ -75,7 +75,7 @@ private infix fun Int.getSupportActionBar(hide: Any): Any {}
             var preferences : DatabaseHelper = getPreferences(MODE_PRIVATE)
             var editor : SharedPreferences.Editor = preferences.edit()
 
-            var usn : EditText = (EditText) findViewById(R.id.username)
+            var usn : EditText = findViewById(R.id.username)
             var string_usrnm = usn.getText().toString()
 
             editor.putString("username", string_usrnm)

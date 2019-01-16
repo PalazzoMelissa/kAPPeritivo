@@ -18,7 +18,7 @@ import e.melissa.kapperitivo.R.id.pietanze
 class CustomPietanzaAdapter (context: Context, pietanze: ArrayList<EditPietanzaModel>): BaseAdapter() {
 
     private val  context: Context
-    var pietanze: ArrayList<EditPietanzaModel>
+    var pietanze= ArrayList<EditPietanzaModel>()
     private lateinit var holder: ViewHolder
 
     //costruttore

@@ -1,4 +1,4 @@
-package Helper
+package helper
 
 import android.app.Activity
 import android.content.Context
@@ -9,15 +9,9 @@ import android.widget.EditText
 /**
  * Created by melissa on 09/01/19.
  */
-class InputValidation
+class InputValidation(cont: Context)
 {
-    private lateinit var  context : Context
-
-    public fun InputValidation(context : Context)
-    {
-        this.context = context
-    }
-
+    private var context: Context = cont
 
     //controlla se i dati inseriti sono nulli
     public fun isInptEditTextFilled(testo : EditText) : Boolean

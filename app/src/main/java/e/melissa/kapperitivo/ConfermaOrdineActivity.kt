@@ -30,7 +30,8 @@ class ConfermaOrdineActivity: AppCompatActivity() {
 
     private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
     private var listaPietanzaOrdinate: ListView? = null
-    private var pietanzaView: ArrayList<EditPietanzaOrdinataModel>? = null
+    private lateinit var pietanzaView: ArrayList<EditPietanzaOrdinataModel>
+    private var ordine= Ordine()
     //ordine da creare
 
     override fun onCreate(savedInstanceState: Bundle)
@@ -78,29 +79,48 @@ class ConfermaOrdineActivity: AppCompatActivity() {
         var conto_senza_modifiche= 0.0
         var conto_modifiche= 0.0
 
+        for (i in 0..pietanzaView!!.size)
+        {
+            conto_senza_modifiche += pietanzaView[i].getCosto()* pietanzaView[i].getQuantita()
+            if(pietanzaView[i].getModifica() != (""))
+            {
+                conto_modifiche++
+            }
+        }
 
+        var intent= Intent(this, ContoActivity)
 
+        //passo i due importi all'activity ContoActvity
+        intent.putExtra("conto_modifiche", conto_modifiche)
+        intent.putExtra("conto_senza-modifiche", conto_senza_modifiche)
 
+        //passo ancge codice, cameriere e tavolo
+        intent.putExtra("ordine", ordine.getCodice())
+        intent.putExtra("Cameriere_usrnm", cameriere)
+        intent.putExtra("tavolo", tavolo)
+        startActivity(intent)
 
     }
 
 
+    private fun getPietanzeOrdinate(): ArrayList<EditPietanzaOrdinataModel>
+    {
+        var editPietanzaOrdinataModelArrayList = ArrayList<EditPietanzaOrdinataModel> ()
+
+        for (i in 0..CustomPietanzaAdapter.pietanze.size) {
+            if (Integer.parseInt(CustomPietanzaAdapter.pietanze[i].getQuantita()) != 0) {
+                val editPietanzaOrdinataModel = EditPietanzaOrdinataModel()
+                editPietanzaOrdinataModel.setCosto(CustomPietanzaAdapter.pietanze.get(i).getPrezzo())
+                editPietanzaOrdinataModel.setNomePietanza(CustomPietanzaAdapter.pietanze.get(i).getNomePietanza())
+                editPietanzaOrdinataModel.setQuantita(Integer.parseInt(CustomPietanzaAdapter.pietanze.get(i).getQuantita()))
+                editPietanzaOrdinataModel.setModifica("")
+                editPietanzaOrdinataModelArrayList.add(editPietanzaOrdinataModel)
+            }
+        }
+
+        return editPietanzaOrdinataModelArrayList
+    }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
