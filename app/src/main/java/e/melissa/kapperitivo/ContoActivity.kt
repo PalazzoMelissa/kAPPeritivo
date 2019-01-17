@@ -1,5 +1,6 @@
 package e.melissa.kapperitivo
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -41,7 +42,7 @@ class ContoActivity: AppCompatActivity(), View.OnClickListener {
 
 
 
-    override fun onCreate(savedInstanceState: Bundle)
+    override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_conto)
