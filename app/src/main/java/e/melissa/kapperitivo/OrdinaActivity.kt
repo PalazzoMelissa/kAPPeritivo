@@ -27,9 +27,9 @@ class OrdinaActivity: AppCompatActivity() {
     private var utente= intent.getStringExtra("Cameriere_usrnm").trim()
 
     private var conferma= findViewById<Button>(R.id.conferma)
+    private var pietanzaView= get_all_dishes()
     private var customPietanzaAdapter= CustomPietanzaAdapter(this, pietanzaView)
     private var lvmenu= findViewById<ListView>(R.id.menu)
-    private var pietanzaView=get_all_dishes() as ArrayList<EditPietanzaModel>
 
 
     override fun onCreate(savedInstanceState: Bundle)
@@ -47,7 +47,7 @@ class OrdinaActivity: AppCompatActivity() {
 
     override fun onClick(view: View)
     {
-        var intent: Intent= Intent(this@OrdinaActivity, ConfermaOrdineActivity)
+        var intent= Intent(this@OrdinaActivity, ConfermaOrdineActivity)
         intent.putExtra("tavolo", tavolo)
         startActivity(intent)
     }
@@ -59,11 +59,42 @@ class OrdinaActivity: AppCompatActivity() {
     }
 
 
-    private fun get_all_dishes()
+    private fun get_all_dishes(): ArrayList<EditPietanzaModel>
     {
         //mostra tutte le pietanze del database
         var categoria= arrayOf("bevanda", "antopasto", "primo", "secondo", "dolce")
         var lvmenu= ArrayList<EditPietanzaModel> ()
+
+        for (i in 0..categoria.size)
+        {
+            var cursor= databaseHelper.vediPietanze(categoria[i]) as Cursor
+
+            if(cursor.count > 0)
+            {
+                cursor.moveToFirst()
+
+                //grafica con le scritte
+                for(i in 0..cursor.count)
+                {
+
+                    var editPietanzaModel= EditPietanzaModel()
+
+                    editPietanzaModel.setNomePietanza(cursor.getString(0))
+                    editPietanzaModel.setPrezzo(cursor.getString(1) as Double)
+                    editPietanzaModel.setDescrizione(cursor.getString(2))
+                    editPietanzaModel.setQuantita("0")
+
+                    lvmenu.add(editPietanzaModel)
+
+                    //creo tale EditText solo come numerica
+                    cursor.moveToNext()
+
+                }
+
+            }
+        }
+
+        return lvmenu
     }
 
 

@@ -5,10 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-
 import model.Cameriere
 import model.Ordine
-import model.Pietanza
 import model.Tavolo
 
 /**
@@ -16,10 +14,6 @@ import model.Tavolo
  */
 //open class SQLiteOpenHelper(context: Context, DATABASE_NAME: Int, factory: SQLiteDatabase.CursorFactory, DATABASE_VERSION : Int)
 class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.db", null, 1) {
-
-
-    //mai usato
-    private val DATABASE_USER = "provatea_gm"
 
     //dati utenti iscritti
     private val COLUMN_USERNAME = "username"
@@ -97,7 +91,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     fun addCameriere(cameriere : Cameriere)
     {
         var db : SQLiteDatabase = this@DatabaseHelper.getWritableDatabase()
-        var values: ContentValues= ContentValues()
+        var values= ContentValues()
 
         values.put(COLUMN_USERNAME, cameriere.getUsername())
         values.put(COlUMN_NOME, cameriere.getNome())
@@ -146,7 +140,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
         var values: ContentValues= ContentValues()
 
         values.put("tavolo", ordine.getTavolo())
-        values.put("cameriee", ordine.getCameriere())
+        values.put("cameriere", ordine.getCameriere())
 
         return db.insert("ordine", null, values) as Int
     }
@@ -156,14 +150,14 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     fun addTavolo(tavolo: Tavolo)
     {
         var db: SQLiteDatabase= this.writableDatabase
-        var values: ContentValues= ContentValues()
+        var values= ContentValues()
         var columns= arrayOf("numero")
-        var selection: String= "numero= ?"
+        var selection= "numero= ?"
         var numero: String= "" + tavolo.getNumero()
         var selectionArgs= arrayOf(numero)
         var cursor: Cursor= db.query("tavolo", columns, selection, selectionArgs, null, null, null)
 
-        //se il numero del tavolo non p presente -> lo aggiungo
+        //se il numero del tavolo non è presente -> lo aggiungo
         if(cursor.count == 0)
         {
             values.put("numero", tavolo.getNumero())
@@ -190,7 +184,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     {
         var columns= arrayOf("nome", "costo", "descrizione", "categoria")
         var db: SQLiteDatabase= this.writableDatabase
-        var selection: String= "categoria= ?"
+        var selection= "categoria= ?"
         var selectionArgs: Array<String> = arrayOf(categoria)
         var cursor: Cursor= db.query("pietanza", columns, selection, selectionArgs, null, null, null)
 
@@ -261,6 +255,17 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
+
+    fun vedi_pietanze_ordine(codiceOrdine: Int): Cursor
+    {
+        var columns= arrayOf("pietanza", "quantita", "modifica")
+        var db= this.readableDatabase
+        var selection= "ordine= ?"
+        var selectionArgs= arrayOf(codiceOrdine as String+"")
+        var cursor= db.query("composto", columns, selection, selectionArgs, null, null, null)
+
+        return cursor
+    }
 
 
 

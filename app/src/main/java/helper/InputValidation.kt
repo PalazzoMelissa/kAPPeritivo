@@ -14,7 +14,7 @@ class InputValidation(cont: Context)
     private var context: Context = cont
 
     //controlla se i dati inseriti sono nulli
-    public fun isInptEditTextFilled(testo : EditText) : Boolean
+    public fun isInputEditTextFilled(testo : EditText) : Boolean
     {
         var value = testo.getText().toString()
 
