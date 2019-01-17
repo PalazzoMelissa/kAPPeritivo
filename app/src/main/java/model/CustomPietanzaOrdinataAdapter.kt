@@ -1,28 +1,21 @@
 package model
 
 import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.EditText
 import android.widget.TextView
-
 import e.melissa.kapperitivo.R
-class CustomPietanzaOrdinataAdapter(context: Context, pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter(){
-    var pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel>
-    private var context: Context
+
+class CustomPietanzaOrdinataAdapter(cont: Context, pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter(){
+    var pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel> = pietanzeOrdinate
+    private var context= cont
 
 
-    init {
-        this.pietanzeOrdinate= pietanzeOrdinate
-        this.context= context
+    override fun getViewTypeCount(): Int {return count
     }
-
-
-    override fun getViewTypeCount(): Int {return getCount()}
 
 
     override fun getItemViewType(position: Int): Int {return position}
@@ -31,13 +24,13 @@ class CustomPietanzaOrdinataAdapter(context: Context, pietanzeOrdinate: ArrayLis
     override fun getCount(): Int {return pietanzeOrdinate.size}
 
 
-    override fun getItem(position: Int): Any {return pietanzeOrdinate.get(position)}
+    override fun getItem(position: Int): Any {return pietanzeOrdinate[position]}
 
 
     override fun getItemId(position: Int): Long {return 0}
 
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View, parent: ViewGroup): View {
         //final CustomPietanzaOrdinataAdapter.ViewHolder holder;
         val holder: View_Holder
 
@@ -55,12 +48,12 @@ class CustomPietanzaOrdinataAdapter(context: Context, pietanzeOrdinate: ArrayLis
             convertView.tag = holder
         }else
             //getTag ritorna l'object set come un tag per la view
-            holder= convertView.getTag() as View_Holder
+            holder= convertView.tag as View_Holder
 
         holder.editTextModifica.setText("" + pietanzeOrdinate[position].getQuantita())
-        holder.textViewPrezzo.setText("" + pietanzeOrdinate[position].getCosto())
-        holder.textViewNome.setText(""+pietanzeOrdinate[position].getNomePietanza())
-        holder.textViewQuantita.setText("" + pietanzeOrdinate[position].getQuantita())
+        holder.textViewPrezzo.text = "" + pietanzeOrdinate[position].getCosto()
+        holder.textViewNome.text = ""+pietanzeOrdinate[position].getNomePietanza()
+        holder.textViewQuantita.text = "" + pietanzeOrdinate[position].getQuantita()
 
         holder.editTextModifica.addTextChangedListener(watcher)
 
@@ -77,22 +70,3 @@ private class View_Holder {
     lateinit var textViewQuantita: TextView
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

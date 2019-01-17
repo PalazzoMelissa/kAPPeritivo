@@ -12,59 +12,34 @@ import android.widget.EditText
 import android.widget.Toast
 import sql.DatabaseHelper
 
-//import com.example.gian2.apperitivogmm.helper.InputValidation
-//import com.example.gian2.apperitivogmm.sql.DatabaseHelper
+class Login : AppCompatActivity(), View.OnClickListener {
 
-open class Login : AppCompatActivity() {
+    private var aggiungi_profilo= findViewById<Button>(R.id.crea)
+    private var activity= this@Login
 
-    private lateinit var aggiungi_profilo: Button
-    private var activity : AppCompatActivity? = this@Login
-
-
-    private lateinit var accesso : Button
-    private lateinit var username : EditText
-    private lateinit var inputValidation : InputValidation
-    private lateinit var databaseHelper : DatabaseHelper
+    private var accesso= findViewById<Button>(R.id.accedi)
+    private var username = findViewById<EditText>(R.id.username)
+    private var inputValidation= InputValidation(activity)
+    private var databaseHelper= DatabaseHelper(activity)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_login)
-        supportActionBar?.hide()
+        supportActionBar!!.hide()
 
-        initViews()
         initListeners()
-        initObjects()
 
     }
 
 
-private infix fun Int.getSupportActionBar(hide: Any): Any {}
 
-
-        //inizializzo parti del form
-        private fun initViews()
-    {
-        var preferences : SharedPreferences  = getPreferences(MODE_PRIVATE)
-        aggiungi_profilo = findViewById(R.id.crea) as Button
-        accesso= findViewById(R.id.accedi)
-        username= findViewById(R.id.username) as EditText
-        var String_usrnm : String = preferences.getString("username",null)
-    }
         //inizializzo bottoni
-        private fun initListeners(){
-            accesso.setOnClickListener(this@Login)
-        aggiungi_profilo.setOnClickListener(this)
-    }
-        //inizializzo oggetti
-        private fun initObjects()
+        private fun initListeners()
         {
-            var databaseHelper : DatabaseHelper(activity)
-            var inputValidation : InputValidation(activity)
-
-        }
-
-
+            accesso.setOnClickListener(this as View.OnClickListener)
+            aggiungi_profilo.setOnClickListener(this as View.OnClickListener)
+         }
 
         @SuppressLint("CommitPrefEdits")
 
@@ -72,11 +47,11 @@ private infix fun Int.getSupportActionBar(hide: Any): Any {}
         override fun onPause()
         {
             super.onPause()
-            var preferences : DatabaseHelper = getPreferences(MODE_PRIVATE)
+            var preferences : SharedPreferences = getPreferences(MODE_PRIVATE)
             var editor : SharedPreferences.Editor = preferences.edit()
 
             var usn : EditText = findViewById(R.id.username)
-            var string_usrnm = usn.getText().toString()
+            var string_usrnm = usn.text.toString()
 
             editor.putString("username", string_usrnm)
             editor.commit()
@@ -86,15 +61,17 @@ private infix fun Int.getSupportActionBar(hide: Any): Any {}
 
         override fun onClick(view : View) {
             //gestione casi click in uno dei due bottoni
-            if(view.getId().toString()=="accedi")
+            if(view.id.toString()=="accedi")
 
             //click sul bottone di accesso all'app
             verifyFromSQLite()
 
-            else if(view.getId().toString()=="crea")
+            else if(view.id.toString()=="crea")
                 //click sul bottone di registrazione per l'utilizzo dell'app
-                var intent : Intent = Intent(getApplicationContext(),RegisterActivity.class)
-                        startActivity(intent)
+            {
+                val intent = Intent(applicationContext, RegisterActivity::class.java)
+                startActivity(intent)
+            }
 
         }
 
@@ -102,27 +79,23 @@ private infix fun Int.getSupportActionBar(hide: Any): Any {}
         fun verifyFromSQLite(){
             //se ho l'username vuoto, allora non eseguo
             if(!inputValidation.isInputEditTextFilled(username)){
-                Toast.makeText(getApplicationContext(),"Inserisci un valore valido !",Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"Inserisci un valore valido!", Toast.LENGTH_LONG).show()
                 return
             }
-            //se l'username inserito è esatto
-            if(databaseHelper.checkCameriere(username.getText().toString().trim())){
-                //accedo alla pagina di gestione
-                var accedi_area = Intent(activity, CameriereActivity.class)
-                        //passo a tale pagina il valore dell'username
-                accedi_area.putExtra("USERNAME", username.getText().toString().trim())
 
-                username.setText(null)
+            if(databaseHelper.checkCameriere(username.text.toString().trim())){
+                //se l'username inserito è esatto accedo alla pagina di gestione, passando il valore dell'username
+                var accedi_area = Intent(activity, CameriereActivity::class.java)
+                accedi_area.putExtra("USERNAME", username.text.toString().trim())
+
+                username.text = null
                 startActivity(accedi_area)
-                //altrimenti
             }else
             {
-                //avviso l'utente di non aver inserito un username non valido
+                //altrimenti avviso l'utente di aver inserito un username non valido
                 Toast.makeText(activity, "Errore, cameriere non iscritto", Toast.LENGTH_SHORT).show()
             }
         }
 
 
     }
-
-}

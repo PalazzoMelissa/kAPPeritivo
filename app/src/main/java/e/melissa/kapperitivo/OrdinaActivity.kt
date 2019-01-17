@@ -17,8 +17,8 @@ import sql.DatabaseHelper
 /**
  * Created by melissa on 01/01/19.
  */
-class OrdinaActivity: AppCompatActivity() {
-    private val ordinaActivity= this@OrdinaActivity
+class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
+    private val ordinaActivity= this
 
     private var databaseHelper= DatabaseHelper(ordinaActivity)
     private var inputValidation= InputValidation(ordinaActivity)
@@ -47,7 +47,7 @@ class OrdinaActivity: AppCompatActivity() {
 
     override fun onClick(view: View)
     {
-        var intent= Intent(this@OrdinaActivity, ConfermaOrdineActivity)
+        var intent= Intent(this@OrdinaActivity, ConfermaOrdineActivity::class.java)
         intent.putExtra("tavolo", tavolo)
         startActivity(intent)
     }
@@ -67,7 +67,7 @@ class OrdinaActivity: AppCompatActivity() {
 
         for (i in 0..categoria.size)
         {
-            var cursor= databaseHelper.vediPietanze(categoria[i]) as Cursor
+            var cursor= databaseHelper.vediPietanze(categoria[i])
 
             if(cursor.count > 0)
             {

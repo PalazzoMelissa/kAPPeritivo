@@ -4,10 +4,10 @@ package model
  * Created by melissa on 09/01/19.
  */
 class Pietanza {
-    private lateinit var nome: String
-    private lateinit var descrizione: String
+    private var nome= ""
+    private var descrizione= ""
     private var prezzo: Double = 0.0
-    private lateinit var categoria: String
+    private var categoria= ""
 
     fun setNome(nome: String) {this.nome = nome}
 

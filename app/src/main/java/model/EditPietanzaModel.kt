@@ -1,10 +1,10 @@
 package model
 
 class EditPietanzaModel {
-    private lateinit var quantita: String
-    private lateinit var nomePietanza: String
+    private var quantita= ""
+    private var nomePietanza= ""
     private var prezzo: Double= 0.0
-    private lateinit var descrizione: String
+    private var descrizione= ""
 
     fun getQuantita(): String {return quantita}
 

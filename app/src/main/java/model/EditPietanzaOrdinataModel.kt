@@ -1,10 +1,10 @@
 package model
 
 class EditPietanzaOrdinataModel {
-    private lateinit var nomePietanza: String
+    private var nomePietanza= ""
     private var quantita: Int = 0
     private var costo: Double = 0.0
-    private lateinit var modifica: String
+    private var modifica= ""
 
     fun getNomePietanza(): String? {
         return nomePietanza

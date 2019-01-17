@@ -12,23 +12,23 @@ class Cameriere {
 
 
     //getters
-    public fun getUsername(): String {return username}
+    fun getUsername(): String {return username}
 
-    public fun getNome(): String {return nome}
+    fun getNome(): String {return nome}
 
-    public fun getCognome(): String {return cognome}
+    fun getCognome(): String {return cognome}
 
-    public fun getNumTel(): String {return num_telefono}
+    fun getNumTel(): String {return num_telefono}
 
 
     //setters
-    public fun setUsername(username: String) {this.username}
+    fun setUsername(username: String) {this.username= username}
 
-    public fun setNome(nome: String) {this.nome}
+    fun setNome(nome: String) {this.nome= nome}
 
-    public fun setCognome(cognome: String) {this.cognome}
+    fun setCognome(cognome: String) {this.cognome= cognome}
 
-    public fun setNumTel(num_telefono: String) {this.num_telefono}
+    fun setNumTel(num_telefono: String) {this.num_telefono= num_telefono}
 
 
 

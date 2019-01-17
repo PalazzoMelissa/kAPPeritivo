@@ -15,7 +15,7 @@ import sql.DatabaseHelper
 /**
  * Created by melissa on 01/01/19.
  */
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private val register= this
     private var registrati_button = findViewById<Button>(R.id.registrati)
@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-    fun onClick(v: View)
+    override fun onClick(v: View)
     {
         //mostra se la registrazione è andata a buon fine
         if(v == registrati_button)
@@ -88,7 +88,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(register,"Sei stato registrato con successo", Toast.LENGTH_LONG).show()
             emptyInputEditText()
 
-            startActivity(Intent(applicationContext, Login))
+            startActivity(Intent(applicationContext, Login::class.java))
 
         }else
 

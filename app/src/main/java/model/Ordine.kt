@@ -5,9 +5,9 @@ package model
  */
 class Ordine {
 
-    private var codice: Int=0
-    private var tavolo: Int?= null
-    private lateinit var cameriere: String
+    private var codice=0
+    private var tavolo=0
+    private var cameriere= ""
     private var conto= 0.0
 
 
