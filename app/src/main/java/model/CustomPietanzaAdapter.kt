@@ -2,7 +2,6 @@ package model
 
 import android.content.Context
 import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,11 +29,13 @@ class CustomPietanzaAdapter (cont: Context, piet: ArrayList<EditPietanzaModel>):
 
     override fun getView(position: Int, convertView: View, parent: ViewGroup): View
     {
-        if(convertView == null)
+        var vi= convertView
+
+        if(vi == null)
         {
             var inflater= context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-            convertView= inflater.inflate(R.layout.layout_pietanza, null, true)
+            vi= inflater.inflate(R.layout.layout_pietanza, null, true)
 
             holder.editTextQuantita = convertView.findViewById(R.id.quantita) as EditText
             holder.textViewNome= convertView.findViewById(R.id.nome) as TextView
@@ -44,19 +45,27 @@ class CustomPietanzaAdapter (cont: Context, piet: ArrayList<EditPietanzaModel>):
             convertView.tag = holder
         }else
         //getTag ritorna l'object set come un tag per la view
-            holder= convertView.tag as ViewHolder
+            holder= vi.tag as ViewHolder
 
         holder.editTextQuantita.setText("" + pietanze[position].getQuantita())
         holder.textViewPrezzo.text = "" + pietanze[position].getPrezzo()
-        holder.textViewNome.text = pietanze[position].getNomePietanza()
-        holder.textViewDescrizione.text = pietanze[position].getDescrizione()
+        holder.textViewNome.text = "" + pietanze[position].getNomePietanza()
+        holder.textViewDescrizione.text = "" + pietanze[position].getDescrizione()
 
-        holder.editTextQuantita.addTextChangedListener(watcher as TextWatcher)
+        holder.editTextQuantita.addTextChangedListener(object: android.text.TextWatcher{
 
-        return convertView
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int)
+                {
+                    pietanze[position].setQuantita(holder.editTextQuantita.text.toString())
+                }
+
+                override fun afterTextChanged(editable: Editable) {}
+                })
+
+        return vi
     }
-
-}
 
 
 private class ViewHolder
@@ -69,17 +78,4 @@ private class ViewHolder
 }
 
 
-private lateinit var watcher: Watcher
-
-
-class Watcher: TextWatcher {
-
-    override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-
-    override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int)
-    {
-        CustomPietanzaAdapter::pietanze.get(position).setQuantita(holder.setTextQuantita.getText.toString())
-    }
-
-    override fun afterTextChanged(editable: Editable) {}
 }

@@ -205,10 +205,20 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
     }
 
+
+    //ricerco tutti gli ordini di un cameriere
+    fun ordini_cameriere(cameriere: Cameriere): Cursor {
+        var columns = arrayOf("codice", "conto")
+        var db = this.readableDatabase
+        var selection = "cameriere=?"
+        var selectionArgs = arrayOf(cameriere.getUsername())
+        return db.query("ordine", columns, selection, selectionArgs, null, null, null)
+    }
+
     //calcolo del costo di una pietanza
     fun costo_pietanza(pietanza: String, quantita_pietanza: Int, modifica: String): Float {
         var costo = 0f
-        val db = this.readableDatabase
+        var db = this.readableDatabase
         val query = "SELECT costo from pietanza where nome=$pietanza"
         val costo_senza_aggiunte = db.rawQuery(query, null)
         costo_senza_aggiunte.moveToFirst()

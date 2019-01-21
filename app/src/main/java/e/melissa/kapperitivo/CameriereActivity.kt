@@ -7,11 +7,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-
-import e.melissa.kapperitivo.R
-import model.Cameriere
 import model.Tavolo
 import sql.DatabaseHelper
+
 /**
  * Created by melissa on 01/01/19.
  */

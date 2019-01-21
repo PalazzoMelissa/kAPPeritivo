@@ -80,7 +80,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     {
         var editPietanzaOrdinataModelArrayList = ArrayList<EditPietanzaOrdinataModel> ()
 
-        for (i in 0..CustomPietanzaAdapter::pietanze.getCount) {
+        for (i in 0..CustomPietanzaAdapter::pietanze.size) {
             if (Integer.parseInt(CustomPietanzaAdapter::pietanze[i].getQuantita()) != 0) {
                 val editPietanzaOrdinataModel = EditPietanzaOrdinataModel()
                 editPietanzaOrdinataModel.setCosto(CustomPietanzaAdapter::pietanze.getItem().getPrezzo())

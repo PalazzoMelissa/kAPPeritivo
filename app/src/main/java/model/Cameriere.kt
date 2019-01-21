@@ -5,10 +5,10 @@ package model
  */
 class Cameriere {
 
-    private lateinit var username: String
-    private lateinit var nome: String
-    private lateinit var cognome: String
-    private lateinit var num_telefono: String
+    private var username= ""
+    private var nome= ""
+    private var cognome= ""
+    private var num_telefono= ""
 
 
     //getters
