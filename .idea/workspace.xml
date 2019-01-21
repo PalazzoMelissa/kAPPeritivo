@@ -12,59 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82df02a4-541d-46c1-89d5-3835d82822a9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_26_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_27_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_26_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_2_51_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_2_51_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jre7_1_2_51_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kAPPeritivo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/model/Cameriere.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/model/Cameriere.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaOrdinataAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaOrdinataAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kAPPeritivo" beforeDir="false" afterPath="$PROJECT_DIR$/kAPPeritivo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kapperitivo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -87,11 +37,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ConfermaOrdineActivity.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CameriereActivity.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="140" selection-start-line="140" selection-end-line="140" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfermaOrdineActivity.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+            <state relative-caret-position="211">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
+              <folding>
+                <element signature="e#31#381#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomPietanzaAdapter.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaAdapter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="931">
+              <caret line="64" column="18" lean-forward="true" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+              <folding>
+                <element signature="e#15#291#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,6 +97,8 @@
       <find>position</find>
       <find>getView</find>
       <find>ordine_</find>
+      <find>as View.OnClickListener</find>
+      <find>Toast.makeText(cameriere_attivita, &quot;Tavolo &quot; + tavolo.getNumero(), Toast.LENGTH_SHORT).show()</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2523,16 +2499,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/model/Cameriere.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaOrdinataAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="405" />
-    <option name="width" value="943" />
+    <option name="x" value="682" />
+    <option name="width" value="666" />
     <option name="height" value="739" />
   </component>
   <component name="ProjectView">
@@ -2785,12 +2761,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547742151227</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Risolti errori nella chiamata di TextWatcher">
+      <created>1548088212566</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1548088212566</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="405" y="0" width="943" height="739" extended-state="0" />
-    <editor active="true" />
+    <frame x="682" y="0" width="666" height="739" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -2806,7 +2788,7 @@
       <window_info id="Captures" order="4" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.5915493" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.28387097" />
       <window_info anchor="bottom" id="Build" order="14" weight="0.19771242" />
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -2864,7 +2846,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Quasi finite di copiare le classi + inizio ottimizzazione codice" />
     <MESSAGE value="Mannaggia a sti cazzo di errori&#10;però ho sintetizzato le dichiarazioni di variabili" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mannaggia a sti cazzo di errori&#10;però ho sintetizzato le dichiarazioni di variabili" />
+    <MESSAGE value="Risolti errori nella chiamata di TextWatcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="Risolti errori nella chiamata di TextWatcher" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ContoActivity.kt">
@@ -2940,6 +2923,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+          <folding>
+            <element signature="e#31#381#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2996,6 +2982,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#31#381#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3159,16 +3148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#31#292#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/Login.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1125">
@@ -3215,8 +3194,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="931">
+          <caret line="64" column="18" lean-forward="true" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
           <folding>
             <element signature="e#15#291#0" expanded="true" />
           </folding>
@@ -3225,8 +3204,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        <state relative-caret-position="211">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="e#31#381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
         </state>
       </provider>
     </entry>

@@ -16,14 +16,15 @@ import sql.DatabaseHelper
  * Created by melissa on 01/01/19.
  */
 class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
+
+    private var invia_ordine= findViewById<Button>(R.id.conferma)
+    private var listaPietanzaOrdinate= findViewById<ListView>(R.id.ordine_completo)
     private var databaseHelper= DatabaseHelper(applicationContext)
     private var tavolo= intent.getIntExtra("tavolo", 0)
-    private var cameriere= intent.getStringExtra("cameriere").toString().trim()
-    private var invia_ordine= findViewById<Button>(R.id.conferma)
 
+    private var cameriere= intent.getStringExtra("cameriere").toString().trim()
     private var pietanzaView= getPietanzeOrdinate()
     private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
-    private var listaPietanzaOrdinate= findViewById<ListView>(R.id.ordine_completo)
     private var ordine= Ordine()
 
 
@@ -33,16 +34,16 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.layout_conferma_ordine)
         init__Listeners()
 
-        //creo il menù
-        databaseHelper.createMenu()
-        listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
+        //inserisco lista pietanze
+        if(pietanzaView.size != 0)
+            listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
 
     }
 
 
     private fun init__Listeners()
     {
-        invia_ordine.setOnClickListener(this@ConfermaOrdineActivity as View.OnClickListener)
+        invia_ordine.setOnClickListener(this@ConfermaOrdineActivity)
     }
 
 
@@ -56,9 +57,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         {
             conto_senza_modifiche += pietanzaView[i].getCosto()* pietanzaView[i].getQuantita()
             if(pietanzaView[i].getModifica() != (""))
-            {
                 conto_modifiche++
-            }
         }
 
         var intent= Intent(this, ContoActivity::class.java)
@@ -80,12 +79,13 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     {
         var editPietanzaOrdinataModelArrayList = ArrayList<EditPietanzaOrdinataModel> ()
 
-        for (i in 0..CustomPietanzaAdapter::pietanze.size) {
-            if (Integer.parseInt(CustomPietanzaAdapter::pietanze[i].getQuantita()) != 0) {
+        for (i in 0..CustomPietanzaAdapter::pietanze.getCount()) {
+
+            if (CustomPietanzaAdapter::pietanze.getItem(i).getQuantita() != 0) {
                 val editPietanzaOrdinataModel = EditPietanzaOrdinataModel()
                 editPietanzaOrdinataModel.setCosto(CustomPietanzaAdapter::pietanze.getItem().getPrezzo())
-                editPietanzaOrdinataModel.setNomePietanza(CustomPietanzaAdapter.pietanze.get(i).getNomePietanza())
-                editPietanzaOrdinataModel.setQuantita(Integer.parseInt(CustomPietanzaAdapter.pietanze.get(i).getQuantita()))
+                editPietanzaOrdinataModel.setNomePietanza(CustomPietanzaAdapter::pietanze.get(i).getNomePietanza())
+                editPietanzaOrdinataModel.setQuantita(Integer.parseInt(CustomPietanzaAdapter::pietanze.get(i).getQuantita()))
                 editPietanzaOrdinataModel.setModifica("")
                 editPietanzaOrdinataModelArrayList.add(editPietanzaOrdinataModel)
             }

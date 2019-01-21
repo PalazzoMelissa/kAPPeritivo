@@ -32,13 +32,13 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
     private lateinit var usernameFromIntent: String
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_user)
         vedi_username= intent.getStringExtra("USERNAME") as TextView
+        usernameFromIntent=intent.getStringExtra("USERNAME")
+        vedi_username.setText("Benvenuto "+usernameFromIntent + ", seleziona il tavolo:")
 
         init_Listeners()
 
@@ -54,18 +54,18 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
 
     private fun init_Listeners()
     {
-        tavolo1.setOnClickListener(this as View.OnClickListener)
-        tavolo2.setOnClickListener(this as View.OnClickListener)
-        tavolo3.setOnClickListener(this as View.OnClickListener)
-        tavolo4.setOnClickListener(this as View.OnClickListener)
-        tavolo5.setOnClickListener(this as View.OnClickListener)
-        tavolo6.setOnClickListener(this as View.OnClickListener)
-        tavolo7.setOnClickListener(this as View.OnClickListener)
-        tavolo8.setOnClickListener(this as View.OnClickListener)
-        tavolo9.setOnClickListener(this as View.OnClickListener)
-        tavolo10.setOnClickListener(this as View.OnClickListener)
-        tavolo11.setOnClickListener(this as View.OnClickListener)
-        tavolo12.setOnClickListener(this as View.OnClickListener)
+        tavolo1.setOnClickListener(this)
+        tavolo2.setOnClickListener(this)
+        tavolo3.setOnClickListener(this)
+        tavolo4.setOnClickListener(this)
+        tavolo5.setOnClickListener(this)
+        tavolo6.setOnClickListener(this)
+        tavolo7.setOnClickListener(this)
+        tavolo8.setOnClickListener(this)
+        tavolo9.setOnClickListener(this)
+        tavolo10.setOnClickListener(this)
+        tavolo11.setOnClickListener(this)
+        tavolo12.setOnClickListener(this)
     }
 
 
@@ -78,64 +78,67 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         when (view.id) {
             R.id.tavolo1 -> {
                 tavolo.setNumero(1)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo2 -> {
                 tavolo.setNumero(2)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo3 -> {
                 tavolo.setNumero(3)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
-
                 ordina(tavolo)
             }
+
             R.id.tavolo4 -> {
                 tavolo.setNumero(4)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo5 -> {
                 tavolo.setNumero(5)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo6 -> {
                 tavolo.setNumero(6)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo7 -> {
                 tavolo.setNumero(7)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo8 -> {
                 tavolo.setNumero(8)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo9 -> {
                 tavolo.setNumero(9)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo10 -> {
                 tavolo.setNumero(10)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo11 -> {
                 tavolo.setNumero(11)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
             }
+
             R.id.tavolo12 -> {
                 tavolo.setNumero(12)
-                Toast.makeText(cameriere_attivita, "Tavolo " + tavolo.getNumero(), Toast.LENGTH_SHORT).show()
                 ordina(tavolo)
+            }
+
+            R.id.vedi_ordini -> {
+                var intent= Intent(applicationContext, VediOrdiniActivity::class.java)
+
             }
         }
     }
