@@ -5,22 +5,18 @@
 
     <ListView
         android:id="@+id/menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:dividerHeight="1dp"
+        style="@style/ListGroupStyle"
         />
 
     <Button
         android:id="@+id/conferma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:layout_alignBottom="@+id/menu"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="0dp"
         android:text="@string/conferma_ordine"
-        android:textStyle="bold|italic"
-        android:textColor="#3d5afe"
+        style="@style/ButtonStyle"
         android:typeface="serif"
-        android:background="#ffffff"
+
         />
 
 

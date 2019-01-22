@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import model.CustomPietanzaAdapter
 import model.CustomPietanzaOrdinataAdapter
 import model.EditPietanzaOrdinataModel
@@ -17,14 +18,14 @@ import sql.DatabaseHelper
  */
 class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
+    private var tavolo= intent.getIntExtra("tavolo", 0)
+    private var cameriere= intent.getStringExtra("cameriere").toString().trim()
+    private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
     private var invia_ordine= findViewById<Button>(R.id.conferma)
+
     private var listaPietanzaOrdinate= findViewById<ListView>(R.id.ordine_completo)
     private var databaseHelper= DatabaseHelper(applicationContext)
-    private var tavolo= intent.getIntExtra("tavolo", 0)
-
-    private var cameriere= intent.getStringExtra("cameriere").toString().trim()
     private var pietanzaView= getPietanzeOrdinate()
-    private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
     private var ordine= Ordine()
 
 
@@ -35,8 +36,14 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         init__Listeners()
 
         //inserisco lista pietanze
-        if(pietanzaView.size != 0)
+        try {
             listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
+        }
+        catch (e: Exception)
+        {
+            Toast.makeText(applicationContext, "Ordine vuoto!", Toast.LENGTH_SHORT).show()
+            finish()
+        }
 
     }
 

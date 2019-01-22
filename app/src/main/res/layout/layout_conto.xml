@@ -1,61 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="18px"
     android:paddingRight="18px"
-    android:background="#3d5afe"
-    tools:context="com.example.gian2.apperitivogmm.activities.Login">
+    tools:context="ContoActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="100px"
         android:orientation="vertical">
         <TextView
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:textSize="23dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
+            android:background="@drawable/textviewstyle"
+            style="@style/TextViewStyle"
             android:id="@+id/info"/>
         <TextView
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
+            android:background="@drawable/textviewstyle"
+            style="@style/TextViewStyle"
             android:id="@+id/conto_senza_modifiche"
             />
         <TextView
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
+            android:background="@drawable/textviewstyle"
+            style="@style/TextViewStyle"
             android:id="@+id/conto_modifiche"
             />
         <TextView
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:background="@drawable/textviewstyle"
+            style="@style/TextViewStyle"
             android:id="@+id/conto_totale"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"/>
+            />
 
 
 
         <Button
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Torna a tavoli"
+            style="@style/ButtonStyle"
+            android:text="@string/torna_tavolo"
             android:id="@+id/torna"/>
 
 

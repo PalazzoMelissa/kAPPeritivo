@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">kAPPeritivo</string>
+    <string name="app_name">apperitivoGMM</string>
     <string name="titolo_login">Accedi al portale di gestione di APPeritivo</string>
     <string name="bottone_accesso">Accedi</string>
-    <string name="bottone_creazione">Crea nuovo profilo</string>
+
     <string name="bottone_registrati"> Registrati</string>
     <string name="nome">Nome...</string>
     <string name="cognome">Cognome...</string>
@@ -10,6 +10,9 @@
     <string name="conferma_ordine">Conferma</string>
     <string name="title_activity_conferma_ordine">ConfermaOrdineActivity</string>
     <string name="conferma">Modifica e Invia ordine</string>
-
-
+    <string name="invia_ordine">Invia ordine</string>
+    <string name="title_activity_vedi_ordini">VediOrdiniActivity</string>
+    <string name="torna_tavolo">Torna a tavoli</string>
+    <string name="nuovo_profilo">Crea nuovo profilo</string>
+    <string name="ordini_completati">Ordini completati</string>
 </resources>

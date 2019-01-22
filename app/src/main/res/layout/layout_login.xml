@@ -1,72 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="e.melissa.kapperitivo.Login">
+    android:paddingLeft="18px"
+    android:paddingRight="18px"
+    tools:context="Login">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="18px"
-        android:paddingRight="18px"
-        android:background="#000000"
-        tools:context="e.melissa.kapperitivo.Login">
+        android:paddingTop="100px"
+        android:orientation="vertical">
+        <TextView
+            style="@style/TextViewStyle"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="100px"
-            android:orientation="vertical">
-            <TextView
-                android:gravity="center"
-                android:layout_width="300dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:text="@string/titolo_login"
-                android:textSize="25dp"
-                android:textColor="#f2edc4"/>
-            <EditText
-                android:gravity="center"
-                android:textColor="#faf7f7"
-                android:textColorHint="#fff"
-                android:background="@drawable/edittextstyle"
-                android:layout_marginTop="60dp"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:hint="Inserisci username..."
-                android:id="@+id/username"
-                android:layout_marginBottom="30dp"/>
-            <Button
+            android:text="@string/titolo_login"
+            />
+        <EditText
 
-                android:textColor="#fff"
-                android:background="@drawable/buttonstyleselector"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:textSize="20dp"
-                android:text="@string/bottone_accesso"
-                android:id="@+id/accedi"/>
+            android:layout_marginTop="60dp"
+            style="@style/EditTextStyle"
+            android:hint="Inserisci username..."
+            android:id="@+id/username"
+            android:layout_marginBottom="30dp"/>
+        <Button
 
-            <Button
-                android:textColor="#fff"
-                android:background="@drawable/buttonstyleselector"
-                android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="left"
-                android:textSize="17dp"
-                android:text="@string/bottone_creazione"
-                android:id="@+id/crea"
-                />
+            style="@style/ButtonStyle"
+            android:textSize="20sp"
+            android:text="@string/bottone_accesso"
+            android:id="@+id/accedi"/>
 
+        <Button
+            style="@style/ButtonStyle"
+            android:textSize="17sp"
+            android:text="@string/nuovo_profilo"
+            android:id="@+id/crea"
+            />
 
-        </LinearLayout>
 
     </LinearLayout>
 
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

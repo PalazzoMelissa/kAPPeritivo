@@ -138,7 +138,8 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
 
             R.id.vedi_ordini -> {
                 var intent= Intent(applicationContext, VediOrdiniActivity::class.java)
-
+                intent.putExtra("cameriere", usernameFromIntent)
+                startActivity(intent)
             }
         }
     }

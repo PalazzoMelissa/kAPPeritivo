@@ -32,7 +32,7 @@ class ContoActivity: AppCompatActivity(), View.OnClickListener {
 
     private var databaseHelper = DatabaseHelper(applicationContext)
 
-    //recupero i dati passati sall'altra activity
+    //recupero i dati passati dall'altra activity
     private var conto_senza_modifiche=intent.getDoubleExtra("conto_senza_modifiche", 0.0)
     private var conto_modifiche = intent.getDoubleExtra("conto_modifiche", 0.0)
     private var conto_totale = conto_modifiche + conto_senza_modifiche
@@ -51,17 +51,17 @@ class ContoActivity: AppCompatActivity(), View.OnClickListener {
         initListeners()
 
         //inserisco stringa per info dell'ordine
-        info_ordine.text = "Ordine  dal cameriere $cameriere al tavolo $tavolo"
-        conto_modificheTextView.setText("Conto delle modifiche : $conto_modifiche")
-
-        conto_totaleTextView.text = "Conto totale : $conto_totale"
+        info_ordine.text = "Ordine  dal cameriere $cameriere \nal tavolo $tavolo"
+        conto_senza_modificheTextView.text = "Importo parziale: € $conto_senza_modifiche"
+        conto_modificheTextView.text= "Importo aggiuntivo: € $conto_modifiche"
+        conto_totaleTextView.text = "Importo totale: € $conto_totale"
 
     }
 
 
     private fun initListeners() {
         //assoccio listener al Button
-        torna_tavolo.setOnClickListener(this as View.OnClickListener)
+        torna_tavolo.setOnClickListener(this)
 
     }
 
@@ -71,17 +71,18 @@ class ContoActivity: AppCompatActivity(), View.OnClickListener {
         ordine.setTavolo(tavolo)
         ordine.setCameriere(cameriere)
         ordine.setConto(conto_totale)
+
         /*
         **inserisco l'ordine nel database e tale operazione mi restituisce il codice dell'ordine
-        **essendo che l'attributo codice dell'ordine è un auto_increment
+        **sfruttando il fatto che questo attributo dell'ordine è un auto_increment
         */
         ordine.setCodice(databaseHelper.addOrdine(ordine))
         //inserisco ogni pietanza ordinata nella tabella del database composto
         for (i in 0..CustomPietanzaOrdinataAdapter::pietanzeOrdinate as Int) {
             //ottengo i diversi attributi della pietanza ordinata di indice i
             val pietanza = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.get(i).getNomePietanza()
-            val quantita = CustomPietanzaOrdinataAdapter.pietanzeOrdinate.get(i).getQuantita()
-            val modifica = CustomPietanzaOrdinataAdapter.pietanzeOrdinate.get(i).getModifica()
+            val quantita = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.get(i).getQuantita()
+            val modifica = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.getter("modifica")//get(i).getModifica()
             //aggiungo tale pietanza ordinata, la quantita, e le possibili modifiche al database nella tabella composto
             databaseHelper.addComposto(ordine, pietanza, quantita, modifica)
         }

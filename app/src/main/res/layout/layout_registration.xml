@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="18px"
-    android:paddingRight="18px"
-    android:background="#000000"
-    tools:context="e.melissa.kapperitivo.RegisterActivity">
+    tools:context="RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,61 +13,28 @@
         android:orientation="vertical">
 
         <EditText
-            android:gravity="center"
-            android:textColor="#faf7f7"
-            android:textColorHint="#fff"
-            android:background="@drawable/edittextstyle"
-
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
+            style="@style/EditTextStyle"
             android:hint="Username..."
             android:id="@+id/usrnm"
-            android:layout_marginBottom="20dp"/>
+            />
         <EditText
-            android:gravity="center"
-            android:textColor="#faf7f7"
-            android:textColorHint="#fff"
-            android:background="@drawable/edittextstyle"
-            android:layout_marginTop="10dp"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
+            style="@style/EditTextStyle"
             android:hint="@string/nome"
             android:id="@+id/nome"
-            android:layout_marginBottom="20dp"/>
+            />
         <EditText
-            android:gravity="center"
-            android:textColor="#faf7f7"
-            android:textColorHint="#fff"
-            android:background="@drawable/edittextstyle"
-            android:layout_marginTop="10dp"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
+            style="@style/EditTextStyle"
             android:hint="@string/cognome"
             android:id="@+id/cognome"
-            android:layout_marginBottom="20dp"/>
+            />
         <EditText
-            android:gravity="center"
-            android:textColor="#faf7f7"
-            android:textColorHint="#fff"
-            android:background="@drawable/edittextstyle"
-            android:layout_marginTop="10dp"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
+            style="@style/EditTextStyle"
             android:hint="@string/numtel"
             android:id="@+id/numtel"
-            android:layout_marginBottom="20dp"/>
+            />
         <Button
-
-            android:textColor="#fff"
-            android:background="@drawable/buttonstyleselector"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:textSize="20dp"
+            style="@style/ButtonStyle"
+            android:textSize="20sp"
             android:text="@string/bottone_registrati"
             android:id="@+id/registrati"/>
 

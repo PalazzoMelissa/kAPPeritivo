@@ -32,7 +32,7 @@ class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
     private var lvmenu= findViewById<ListView>(R.id.menu)
 
 
-    override fun onCreate(savedInstanceState: Bundle)
+    override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_ordina)
@@ -98,22 +98,4 @@ class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
