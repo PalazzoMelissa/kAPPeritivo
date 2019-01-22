@@ -19,13 +19,13 @@ import sql.DatabaseHelper
 class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
     private var tavolo= intent.getIntExtra("tavolo", 0)
+    //private var pietanzaView= getPietanzeOrdinate()
     private var cameriere= intent.getStringExtra("cameriere").toString().trim()
-    private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
-    private var invia_ordine= findViewById<Button>(R.id.conferma)
+    //private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
 
+    private var invia_ordine= findViewById<Button>(R.id.conferma)
     private var listaPietanzaOrdinate= findViewById<ListView>(R.id.ordine_completo)
     private var databaseHelper= DatabaseHelper(applicationContext)
-    private var pietanzaView= getPietanzeOrdinate()
     private var ordine= Ordine()
 
 
@@ -37,7 +37,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
         //inserisco lista pietanze
         try {
-            listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
+          //  listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
         }
         catch (e: Exception)
         {
@@ -54,18 +54,18 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-
+    //
     override fun onClick(view: View)
     {
         var conto_senza_modifiche= 0.0
         var conto_modifiche= 0.0
 
-        for (i in 0..pietanzaView.size)
+       /* for (i in 0..pietanzaView.size)
         {
             conto_senza_modifiche += pietanzaView[i].getCosto()* pietanzaView[i].getQuantita()
             if(pietanzaView[i].getModifica() != (""))
                 conto_modifiche++
-        }
+        }*/
 
         var intent= Intent(this, ContoActivity::class.java)
 
@@ -82,15 +82,15 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    private fun getPietanzeOrdinate(): ArrayList<EditPietanzaOrdinataModel>
+    /*private fun getPietanzeOrdinate(): ArrayList<EditPietanzaOrdinataModel>
     {
         var editPietanzaOrdinataModelArrayList = ArrayList<EditPietanzaOrdinataModel> ()
 
-        for (i in 0..CustomPietanzaAdapter::pietanze.getCount()) {
+        for (i in 0..CustomPietanzaAdapter::getCount()) {
 
-            if (CustomPietanzaAdapter::pietanze.getItem(i).getQuantita() != 0) {
+            if (CustomPietanzaAdapter::pietanze:: != 0) {
                 val editPietanzaOrdinataModel = EditPietanzaOrdinataModel()
-                editPietanzaOrdinataModel.setCosto(CustomPietanzaAdapter::pietanze.getItem().getPrezzo())
+                editPietanzaOrdinataModel.setCosto(CustomPietanzaAdapter::pietanze.get(i))
                 editPietanzaOrdinataModel.setNomePietanza(CustomPietanzaAdapter::pietanze.get(i).getNomePietanza())
                 editPietanzaOrdinataModel.setQuantita(Integer.parseInt(CustomPietanzaAdapter::pietanze.get(i).getQuantita()))
                 editPietanzaOrdinataModel.setModifica("")
@@ -99,7 +99,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         return editPietanzaOrdinataModelArrayList
-    }
+    }*/
 
 
 }

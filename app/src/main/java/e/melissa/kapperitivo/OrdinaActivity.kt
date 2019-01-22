@@ -27,8 +27,7 @@ class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
     private var utente= intent.getStringExtra("Cameriere_usrnm").trim()
 
     private var conferma= findViewById<Button>(R.id.conferma)
-    private var pietanzaView= get_all_dishes()
-    private var customPietanzaAdapter= CustomPietanzaAdapter(this, pietanzaView)
+    private var customPietanzaAdapter= CustomPietanzaAdapter(this)
     private var lvmenu= findViewById<ListView>(R.id.menu)
 
 
@@ -59,10 +58,10 @@ class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    private fun get_all_dishes(): ArrayList<EditPietanzaModel>
+    /*private fun get_all_dishes(): ArrayList<EditPietanzaModel>
     {
         //mostra tutte le pietanze del database
-        var categoria= arrayOf("bevanda", "antopasto", "primo", "secondo", "dolce")
+        var categoria= arrayOf("bevanda", "antipasto", "primo", "secondo", "dolce")
         var lvmenu= ArrayList<EditPietanzaModel> ()
 
         for (i in 0..categoria.size)
@@ -95,7 +94,7 @@ class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         return lvmenu
-    }
+    }*/
 
 
 }

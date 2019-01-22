@@ -14,11 +14,10 @@ import sql.DatabaseHelper
 
 class Login : AppCompatActivity(), View.OnClickListener {
 
-    private var aggiungi_profilo= findViewById<Button>(R.id.crea)
     private var activity= this@Login
-
-    private var accesso= findViewById<Button>(R.id.accedi)
-    private var username = findViewById<EditText>(R.id.username)
+    private lateinit var accesso:Button
+    private lateinit var username :EditText
+    private lateinit var aggiungi_profilo:Button
     private var inputValidation= InputValidation(activity)
     private var databaseHelper= DatabaseHelper(activity)
 
@@ -27,13 +26,17 @@ class Login : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_login)
         supportActionBar!!.hide()
-
+        initViews()
         initListeners()
 
     }
 
 
-
+        private fun initViews(){
+            accesso=findViewById<Button>(R.id.accedi)
+            username=findViewById<EditText>(R.id.username)
+            aggiungi_profilo=findViewById<Button>(R.id.crea)
+        }
         //inizializzo bottoni
         private fun initListeners()
         {
@@ -61,18 +64,16 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
         override fun onClick(view : View) {
             //gestione casi click in uno dei due bottoni
-            if(view.id.toString()=="accedi")
-
-            //click sul bottone di accesso all'app
-            verifyFromSQLite()
-
-            else if(view.id.toString()=="crea")
-                //click sul bottone di registrazione per l'utilizzo dell'app
-            {
-                val intent = Intent(applicationContext, RegisterActivity::class.java)
-                startActivity(intent)
+            when(view.id){
+                R.id.accedi->{
+                    //click sul bottone di accesso all'app
+                    verifyFromSQLite()
+                }
+                R.id.crea->{
+                    val intent = Intent(applicationContext, RegisterActivity::class.java)
+                    startActivity(intent)
+                }
             }
-
         }
 
         //verifica del login

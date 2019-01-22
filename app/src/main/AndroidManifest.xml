@@ -16,6 +16,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="e.melissa.kapperitivo.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="e.melissa.kapperitivo.ConfermaOrdineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="e.melissa.kapperitivo.CameriereActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="e.melissa.kapperitivo.OrdinaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="e.melissa.kapperitivo.ContoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="e.melissa.kapperitivo.VediOrdiniActivity"
+            android:label="@string/title_activity_vedi_ordini"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

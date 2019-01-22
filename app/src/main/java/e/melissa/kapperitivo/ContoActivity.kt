@@ -80,11 +80,11 @@ class ContoActivity: AppCompatActivity(), View.OnClickListener {
         //inserisco ogni pietanza ordinata nella tabella del database composto
         for (i in 0..CustomPietanzaOrdinataAdapter::pietanzeOrdinate as Int) {
             //ottengo i diversi attributi della pietanza ordinata di indice i
-            val pietanza = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.get(i).getNomePietanza()
-            val quantita = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.get(i).getQuantita()
-            val modifica = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.getter("modifica")//get(i).getModifica()
+            //val pietanza = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.get(i).getNomePietanza()
+            //val quantita = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.get(i).getQuantita()
+            //val modifica = CustomPietanzaOrdinataAdapter::pietanzeOrdinate.getter("modifica")//get(i).getModifica()
             //aggiungo tale pietanza ordinata, la quantita, e le possibili modifiche al database nella tabella composto
-            databaseHelper.addComposto(ordine, pietanza, quantita, modifica)
+            //databaseHelper.addComposto(ordine, pietanza, quantita, modifica)
         }
         val intent = Intent(this@ContoActivity, CameriereActivity::class.java)
         intent.putExtra("USERNAME", cameriere)

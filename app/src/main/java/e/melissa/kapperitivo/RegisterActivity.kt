@@ -39,6 +39,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+
     private fun initViews()
     {
         numeroTel.inputType = InputType.TYPE_CLASS_NUMBER

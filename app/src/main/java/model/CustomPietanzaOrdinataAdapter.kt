@@ -1,6 +1,7 @@
 package model
 
 import android.content.Context
+import android.system.Os.bind
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -42,10 +43,10 @@ class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietan
             var inflater= context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             vi= inflater.inflate(R.layout.layout_pietanza_ordinata, null, true)
 
-            holder.editTextModifica = convertView.findViewById(R.id.modifica) as EditText
-            holder.textViewNome = convertView.findViewById(R.id.nome) as TextView
-            holder.textViewPrezzo = convertView.findViewById(R.id.prezzo) as TextView
-            holder.textViewQuantita = convertView.findViewById(R.id.quantita) as TextView
+            holder.editTextModifica = convertView.findViewById(R.id.modifica)
+            holder.textViewNome = convertView.findViewById(R.id.nome)
+            holder.textViewPrezzo = convertView.findViewById(R.id.prezzo)
+            holder.textViewQuantita = convertView.findViewById(R.id.quantita)
 
             convertView.tag = holder
         }else

@@ -9,11 +9,54 @@ import android.widget.BaseAdapter
 import android.widget.EditText
 import android.widget.TextView
 import e.melissa.kapperitivo.R
+import sql.DatabaseHelper
+import java.util.*
+import kotlin.collections.ArrayList
 
-class CustomPietanzaAdapter (cont: Context, piet: ArrayList<EditPietanzaModel>): BaseAdapter() {
 
-    var pietanze= piet
+class CustomPietanzaAdapter (cont: Context): BaseAdapter() {
+
+    companion object Pietanze{
+        fun inserisci_pietanze(databaseHelper: DatabaseHelper): ArrayList<EditPietanzaModel>{
+            var categoria= arrayOf("bevanda", "antipasto", "primo", "secondo", "dolce")
+            var lvmenu= ArrayList<EditPietanzaModel> ()
+
+            for (i in 0..categoria.size)
+            {
+                var cursor= databaseHelper.vediPietanze(categoria[i])
+
+                if(cursor.count > 0)
+                {
+                    cursor.moveToFirst()
+
+                    //grafica con le scritte
+                    for(i in 0..cursor.count)
+                    {
+
+                        var editPietanzaModel= EditPietanzaModel()
+
+                        editPietanzaModel.setNomePietanza(cursor.getString(0))
+                        editPietanzaModel.setPrezzo(cursor.getString(1) as Double)
+                        editPietanzaModel.setDescrizione(cursor.getString(2))
+                        editPietanzaModel.setQuantita("0")
+
+                        lvmenu.add(editPietanzaModel)
+
+                        //creo tale EditText solo come numerica
+                        cursor.moveToNext()
+
+                    }
+
+                }
+            }
+            return lvmenu
+        }
+    }
+
+    val pietanze=CustomPietanzaAdapter.Pietanze
+
     private val  context= cont
+    private val databaseHelper=DatabaseHelper(context)
     private var holder= ViewHolder()
 
 
@@ -21,9 +64,10 @@ class CustomPietanzaAdapter (cont: Context, piet: ArrayList<EditPietanzaModel>):
 
     override fun getItemViewType(position: Int): Int {return position}
 
-    override fun getCount(): Int {return pietanze.size}
+    override fun getCount(): Int {return Pietanze.inserisci_pietanze(databaseHelper).size}
 
-    override fun getItem(position: Int): Any {return pietanze[position]}
+    override fun getItem(position: Int): Any {return Pietanze.inserisci_pietanze(databaseHelper)[position]
+    }
 
     override fun getItemId(position: Int): Long {return 0}
 
@@ -37,20 +81,20 @@ class CustomPietanzaAdapter (cont: Context, piet: ArrayList<EditPietanzaModel>):
 
             vi= inflater.inflate(R.layout.layout_pietanza, null, true)
 
-            holder.editTextQuantita = convertView.findViewById(R.id.quantita) as EditText
-            holder.textViewNome= convertView.findViewById(R.id.nome) as TextView
-            holder.textViewPrezzo= convertView.findViewById(R.id.prezzo) as TextView
-            holder.textViewDescrizione= convertView.findViewById(R.id.descrizione) as TextView
+            holder.editTextQuantita = convertView.findViewById(R.id.quantita)
+            holder.textViewNome= convertView.findViewById(R.id.nome)
+            holder.textViewPrezzo= convertView.findViewById(R.id.prezzo)
+            holder.textViewDescrizione= convertView.findViewById(R.id.descrizione)
 
             convertView.tag = holder
         }else
         //getTag ritorna l'object set come un tag per la view
             holder= vi.tag as ViewHolder
 
-        holder.editTextQuantita.setText("" + pietanze[position].getQuantita())
-        holder.textViewPrezzo.text = "" + pietanze[position].getPrezzo()
-        holder.textViewNome.text = "" + pietanze[position].getNomePietanza()
-        holder.textViewDescrizione.text = "" + pietanze[position].getDescrizione()
+        holder.editTextQuantita.setText("" + Pietanze.inserisci_pietanze(databaseHelper)[position].getQuantita())
+        holder.textViewPrezzo.text = "" + Pietanze.inserisci_pietanze(databaseHelper)[position].getPrezzo()
+        holder.textViewNome.text = "" + Pietanze.inserisci_pietanze(databaseHelper)[position].getNomePietanza()
+        holder.textViewDescrizione.text = "" + Pietanze.inserisci_pietanze(databaseHelper)[position].getDescrizione()
 
         holder.editTextQuantita.addTextChangedListener(object: android.text.TextWatcher{
 
@@ -58,7 +102,7 @@ class CustomPietanzaAdapter (cont: Context, piet: ArrayList<EditPietanzaModel>):
 
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int)
                 {
-                    pietanze[position].setQuantita(holder.editTextQuantita.text.toString())
+                    Pietanze.inserisci_pietanze(databaseHelper)[position].setQuantita(holder.editTextQuantita.text.toString())
                 }
 
                 override fun afterTextChanged(editable: Editable) {}
