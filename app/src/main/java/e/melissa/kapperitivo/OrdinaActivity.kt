@@ -26,16 +26,16 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
     //tavolo scelto su cui fare l'ordine
     private var tavolo: Int = 0
     //cameriere che accede alla creazione dell'ordine
-    private var utente: String? = null
+    private lateinit var utente: String
 
     //creo oggetto bottone per ordinare
     //private Button conferma;
-    private var conferma: Button? = null
+    private lateinit var conferma: Button
     //creo arrayList pietanze
 
-    private var customPietanzaAdapter: CustomPietanzaAdapter? = null
-    private var lvmenu: ListView? = null
-    private var pietanzaView: ArrayList<EditPietanzaModel>? = null
+    private lateinit var customPietanzaAdapter: CustomPietanzaAdapter
+    private lateinit var lvmenu: ListView
+    private lateinit var pietanzaView: ArrayList<EditPietanzaModel>
 
     private//oggetto per vedere tutte le pietanze dal database
     //grafica scritte

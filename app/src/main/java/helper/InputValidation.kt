@@ -14,9 +14,9 @@ class InputValidation(cont: Context)
     private var context: Context = cont
 
     //controlla se i dati inseriti sono nulli
-    public fun isInputEditTextFilled(testo : EditText) : Boolean
+    fun isInputEditTextFilled(testo : EditText) : Boolean
     {
-        var value = testo.getText().toString()
+        var value = testo.text.toString()
 
         if(value.isEmpty())
         {
@@ -29,9 +29,9 @@ class InputValidation(cont: Context)
 
 
     //verifica esattezza formato numero telefonico
-    public fun isInputTextNumTelFilled(num_tel : EditText) : Boolean
+    fun isInputTextNumTelFilled(num_tel : EditText) : Boolean
     {
-        var value = num_tel.getText().toString()
+        var value = num_tel.text.toString()
 
         if(value.isEmpty() && value.length!=10)
         {

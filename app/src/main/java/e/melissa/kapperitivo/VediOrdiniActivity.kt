@@ -12,10 +12,10 @@ import sql.DatabaseHelper
 
 class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
 
-    private var databaseHelper= DatabaseHelper(this)
+    private lateinit var databaseHelper: DatabaseHelper
     //cameriere di cui visualizzerò l'ordine
-    private var cameriere= Cameriere()
-    private var linearLayoutVediordini= findViewById<View>(R.id.vedi_ordini) as LinearLayout
+    private lateinit var cameriere: Cameriere
+    private lateinit var linearLayoutVediordini: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
