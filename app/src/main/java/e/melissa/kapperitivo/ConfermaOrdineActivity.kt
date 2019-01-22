@@ -18,22 +18,34 @@ import sql.DatabaseHelper
  */
 class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
-    private var tavolo= intent.getIntExtra("tavolo", 0)
-    //private var pietanzaView= getPietanzeOrdinate()
-    private var cameriere= intent.getStringExtra("cameriere").toString().trim()
-    //private var customPietanzaOrdinataAdapter= CustomPietanzaOrdinataAdapter(this, pietanzaView)
+    private var tavolo: Int=0
+    private lateinit var cameriere: String
+    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var invia_ordine: Button
 
-    private var invia_ordine= findViewById<Button>(R.id.conferma)
-    private var listaPietanzaOrdinate= findViewById<ListView>(R.id.ordine_completo)
-    private var databaseHelper= DatabaseHelper(applicationContext)
-    private var ordine= Ordine()
+    private lateinit var customPietanzaOrdinataAdapter: CustomPietanzaOrdinataAdapter
+    private lateinit var listaPietanzaOrdinate: ListView
+    private lateinit var pietanzaView: ArrayList<EditPietanzaOrdinataModel>
+    private lateinit var ordine: Ordine
+    //ordine da creare
+
 
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_conferma_ordine)
+        cameriere = intent.getStringExtra("cameriere").toString().trim { it <= ' ' }
+        tavolo = intent.getIntExtra("tavolo", 0)
+        init__Views()
         init__Listeners()
+        init__Objects()
+
+        //ottengo lista componenti grafici relativi a pietanze ordinate
+        pietanzaView = getPietanzeOrdinate()
+        //inizializzo Adapter per inserire tutte le diverse pietanze ordinate nella ListView
+        customPietanzaOrdinataAdapter = CustomPietanzaOrdinataAdapter(this, pietanzaView)
+        //inserisco la lista di pietanze
 
         //inserisco lista pietanze
         try {
@@ -48,9 +60,25 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
+    private fun init__Views()
+    {
+        invia_ordine= findViewById(R.id.conferma)
+        listaPietanzaOrdinate= findViewById(R.id.ordine_completo)
+
+    }
+
+
+
     private fun init__Listeners()
     {
-        invia_ordine.setOnClickListener(this@ConfermaOrdineActivity)
+        invia_ordine.setOnClickListener(this@ConfermaOrdineActivity as View.OnClickListener)
+    }
+
+
+
+    private fun init__Objects()
+    {
+
     }
 
 

@@ -14,37 +14,55 @@ import sql.DatabaseHelper
 
 class Login : AppCompatActivity(), View.OnClickListener {
 
-    private var activity= this@Login
-    private lateinit var accesso:Button
-    private lateinit var username :EditText
-    private lateinit var aggiungi_profilo:Button
-    private var inputValidation= InputValidation(activity)
-    private var databaseHelper= DatabaseHelper(activity)
+    private var activity : AppCompatActivity? = this@Login
+    private lateinit var aggiungi_profilo: Button
+
+
+    private lateinit var accesso : Button
+    private lateinit var username : EditText
+    private lateinit var inputValidation : InputValidation
+    private lateinit var databaseHelper : DatabaseHelper
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_login)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+
         initViews()
         initListeners()
+        initObjects()
 
     }
 
 
-        private fun initViews(){
-            accesso=findViewById<Button>(R.id.accedi)
-            username=findViewById<EditText>(R.id.username)
-            aggiungi_profilo=findViewById<Button>(R.id.crea)
-        }
-        //inizializzo bottoni
-        private fun initListeners()
-        {
-            accesso.setOnClickListener(this as View.OnClickListener)
-            aggiungi_profilo.setOnClickListener(this as View.OnClickListener)
-         }
 
-        @SuppressLint("CommitPrefEdits")
+    //inizializzo parti del form
+    private fun initViews()
+    {
+        var preferences : SharedPreferences  = getPreferences(MODE_PRIVATE)
+        aggiungi_profilo = findViewById(R.id.crea)
+        accesso= findViewById(R.id.accedi)
+        username= findViewById(R.id.username)
+    }
+
+    //inizializzo bottoni
+    private fun initListeners(){
+        accesso.setOnClickListener(this)
+        aggiungi_profilo.setOnClickListener(this)
+    }
+
+    //inizializzo oggetti
+    private fun initObjects()
+    {
+        var databaseHelper= DatabaseHelper(this)
+        var inputValidation= InputValidation(this)
+
+    }
+
+
+
+    @SuppressLint("CommitPrefEdits")
 
 
         override fun onPause()

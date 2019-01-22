@@ -1,100 +1,127 @@
-package e.melissa.kapperitivo
+package com.example.gian2.apperitivogmm.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.content.Intent
-import android.database.Cursor
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
-
+import e.melissa.kapperitivo.ConfermaOrdineActivity
 import e.melissa.kapperitivo.R
-import helper.InputValidation
 import model.CustomPietanzaAdapter
 import model.EditPietanzaModel
 import sql.DatabaseHelper
+import java.util.*
+
 /**
- * Created by melissa on 01/01/19.
+ * Created by gian2 on 02/08/2018.
  */
-class OrdinaActivity: AppCompatActivity(), View.OnClickListener {
-    private val ordinaActivity= this
 
-    private var databaseHelper= DatabaseHelper(ordinaActivity)
-    private var inputValidation= InputValidation(ordinaActivity)
-    private var tavolo= intent.getIntExtra("Tavolo", 0)
-    private var cameriere= ""
-    private var utente= intent.getStringExtra("Cameriere_usrnm").trim()
+class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var conferma= findViewById<Button>(R.id.conferma)
-    private var customPietanzaAdapter= CustomPietanzaAdapter(this)
-    private var lvmenu= findViewById<ListView>(R.id.menu)
+    private val ordinaActivity: AppCompatActivity
+
+    private lateinit var databaseHelper: DatabaseHelper
+    //tavolo scelto su cui fare l'ordine
+    private var tavolo: Int = 0
+    //cameriere che accede alla creazione dell'ordine
+    private var utente: String? = null
+
+    //creo oggetto bottone per ordinare
+    //private Button conferma;
+    private var conferma: Button? = null
+    //creo arrayList pietanze
+
+    private var customPietanzaAdapter: CustomPietanzaAdapter? = null
+    private var lvmenu: ListView? = null
+    private var pietanzaView: ArrayList<EditPietanzaModel>? = null
+
+    private//oggetto per vedere tutte le pietanze dal database
+    //grafica scritte
+    //creo tale Edittext come solo edit text numerica
+    val _all_dishes: ArrayList<EditPietanzaModel>
+        get() {
+            val categoria = arrayOf("bevanda", "antipasto", "primo", "secondo", "dolce")
+            val lvmenu = ArrayList<EditPietanzaModel>()
+            for (j in categoria.indices) {
+                val cursor = databaseHelper!!.vediPietanze(categoria[j])
+                if (cursor.count > 0) {
+                    cursor.moveToFirst()
+
+                    val categoria_attuale = ""
+                    val categoria_vedi = arrayOfNulls<TextView>(6)
+                    for (i in 0 until cursor.count) {
+                        if (cursor.getString(3) != categoria_attuale) {
+
+                        }
+                        val editPietanzaModel = EditPietanzaModel()
+                        editPietanzaModel.setPrezzo(cursor.getString(1) as Double)
+                        editPietanzaModel.setDescrizione(cursor.getString(2))
+                        editPietanzaModel.setNomePietanza(cursor.getString(0))
+                        editPietanzaModel.setQuantita("")
+                        lvmenu.add(editPietanzaModel)
+                        cursor.moveToNext()
+                    }
+                }
+            }
+            return lvmenu
+        }
+
+    init {
+        ordinaActivity = this@OrdinaActivity
+    }
 
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_ordina)
 
+        //inizializzo views
+        initViews()
+        //inizializzo listeners
         initListeners()
+        //inizializzo oggetti
+        initObjects()
 
-        databaseHelper.createMenu()
-        lvmenu.adapter = customPietanzaAdapter
+        //creo il menu
+        databaseHelper!!.createMenu()
+        pietanzaView = _all_dishes
+        customPietanzaAdapter = CustomPietanzaAdapter(this)
+        lvmenu!!.adapter = customPietanzaAdapter
+
 
     }
 
-
-    override fun onClick(view: View)
-    {
-        var intent= Intent(this@OrdinaActivity, ConfermaOrdineActivity::class.java)
+    override fun onClick(view: View) {
+        val intent = Intent(this@OrdinaActivity, ConfermaOrdineActivity::class.java)
+        //passo username cameriere alla prossima activity
+        intent.putExtra("cameriere", utente)
+        //passo tavolo alla prossima activity
         intent.putExtra("tavolo", tavolo)
         startActivity(intent)
+
     }
 
+    //inizializzo viste
+    private fun initViews() {
+        lvmenu = findViewById(R.id.menu)
+        conferma = findViewById(R.id.conferma)
 
-    private fun initListeners()
-    {
-        conferma.setOnClickListener(this@OrdinaActivity as View.OnClickListener)
     }
 
+    //inizializo listeners
+    private fun initListeners() {
+        conferma!!.setOnClickListener(this)
+    }
 
-    /*private fun get_all_dishes(): ArrayList<EditPietanzaModel>
-    {
-        //mostra tutte le pietanze del database
-        var categoria= arrayOf("bevanda", "antipasto", "primo", "secondo", "dolce")
-        var lvmenu= ArrayList<EditPietanzaModel> ()
-
-        for (i in 0..categoria.size)
-        {
-            var cursor= databaseHelper.vediPietanze(categoria[i])
-
-            if(cursor.count > 0)
-            {
-                cursor.moveToFirst()
-
-                //grafica con le scritte
-                for(i in 0..cursor.count)
-                {
-
-                    var editPietanzaModel= EditPietanzaModel()
-
-                    editPietanzaModel.setNomePietanza(cursor.getString(0))
-                    editPietanzaModel.setPrezzo(cursor.getString(1) as Double)
-                    editPietanzaModel.setDescrizione(cursor.getString(2))
-                    editPietanzaModel.setQuantita("0")
-
-                    lvmenu.add(editPietanzaModel)
-
-                    //creo tale EditText solo come numerica
-                    cursor.moveToNext()
-
-                }
-
-            }
-        }
-
-        return lvmenu
-    }*/
+    //inizializzo oggetti
+    private fun initObjects() {
+        tavolo = intent.getIntExtra("Tavolo", 0)
+        utente = intent.getStringExtra("Cameriere_usrnm").toString().trim { it <= ' ' }
+        databaseHelper = DatabaseHelper(ordinaActivity)
+    }
 
 
 }
