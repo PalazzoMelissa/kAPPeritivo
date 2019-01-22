@@ -18,11 +18,11 @@ import sql.DatabaseHelper
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private val register= this
-    private var registrati_button = findViewById<Button>(R.id.registrati)
-    private var username= findViewById<EditText>(R.id.usrnm)
-    private var nome= findViewById<EditText>(R.id.nome)
-    private var cognome = findViewById<EditText>(R.id.cognome)
-    private var numeroTel = findViewById<EditText>(R.id.numtel)
+    private lateinit var registrati_button: Button
+    private lateinit var username:EditText
+    private lateinit var nome:EditText
+    private lateinit var cognome :EditText
+    private lateinit var numeroTel:EditText
     private var cameriere= Cameriere()
 
     private var databaseHelper= DatabaseHelper(register)
@@ -42,6 +42,11 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initViews()
     {
+        registrati_button = findViewById<Button>(R.id.registrati)
+        username= findViewById<EditText>(R.id.usrnm)
+        nome= findViewById<EditText>(R.id.nome)
+        cognome = findViewById<EditText>(R.id.cognome)
+        numeroTel = findViewById<EditText>(R.id.numtel)
         numeroTel.inputType = InputType.TYPE_CLASS_NUMBER
     }
 

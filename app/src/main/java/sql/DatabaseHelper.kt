@@ -111,7 +111,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
         var db: SQLiteDatabase= this.getWritableDatabase()
         var selection: String= COLUMN_USERNAME + " =?"
 
-        var selectionArgs=arrayOf("username")
+        var selectionArgs=arrayOf(username)
         var cursor: Cursor= db.query(TABLE_CAMERIERE, columns, selection, selectionArgs, null, null, null)
 
         //conto quanti camerieri ho trovato

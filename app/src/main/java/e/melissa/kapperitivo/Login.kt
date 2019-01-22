@@ -94,7 +94,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
             }else
             {
                 //altrimenti avviso l'utente di aver inserito un username non valido
-                Toast.makeText(activity, "Errore, cameriere non iscritto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Errore, cameriere"+username.text.toString().trim()+" non iscritto", Toast.LENGTH_SHORT).show()
             }
         }
 

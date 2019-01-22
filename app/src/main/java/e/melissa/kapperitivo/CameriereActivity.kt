@@ -14,21 +14,21 @@ import sql.DatabaseHelper
  * Created by melissa on 01/01/19.
  */
 class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
-    private var cameriere_attivita = this@CameriereActivity
-    private var vedi_username= findViewById<TextView>(R.id.vedi)
-    private var tavolo1= findViewById<Button>(R.id.tavolo1)
-    private var tavolo2= findViewById<Button>(R.id.tavolo2)
-    private var tavolo3= findViewById<Button>(R.id.tavolo3)
-    private var tavolo4= findViewById<Button>(R.id.tavolo4)
-    private var tavolo5= findViewById<Button>(R.id.tavolo5)
-    private var tavolo6= findViewById<Button>(R.id.tavolo6)
-    private var tavolo7= findViewById<Button>(R.id.tavolo7)
-    private var tavolo8= findViewById<Button>(R.id.tavolo8)
-    private var tavolo9= findViewById<Button>(R.id.tavolo9)
-    private var tavolo10= findViewById<Button>(R.id.tavolo10)
-    private var tavolo11= findViewById<Button>(R.id.tavolo11)
-    private var tavolo12= findViewById<Button>(R.id.tavolo12)
-    private var databaseHelper= DatabaseHelper(cameriere_attivita)
+    private lateinit var cameriere_attivita :CameriereActivity
+    private lateinit var vedi_username:TextView
+    private lateinit var tavolo1:Button
+    private lateinit var tavolo2:Button
+    private lateinit var tavolo3:Button
+    private lateinit var tavolo4:Button
+    private lateinit var tavolo5:Button
+    private lateinit var tavolo6:Button
+    private lateinit var tavolo7:Button
+    private lateinit var tavolo8:Button
+    private lateinit var tavolo9:Button
+    private lateinit var tavolo10:Button
+    private lateinit var tavolo11:Button
+    private lateinit var tavolo12:Button
+    private lateinit var databaseHelper:DatabaseHelper
     private lateinit var usernameFromIntent: String
 
 
@@ -36,12 +36,12 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_user)
-        vedi_username= intent.getStringExtra("USERNAME") as TextView
+        cameriere_attivita = this@CameriereActivity
+        databaseHelper=DatabaseHelper(cameriere_attivita)
         usernameFromIntent=intent.getStringExtra("USERNAME")
-        vedi_username.setText("Benvenuto "+usernameFromIntent + ", seleziona il tavolo:")
-
+        initViews()
         init_Listeners()
-
+        vedi_username.setText("Benvenuto "+usernameFromIntent + ", seleziona il tavolo:")
         for(i in 0..12)
         {
             var t= Tavolo()
@@ -50,6 +50,22 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
             databaseHelper.addTavolo(t)
         }
 
+    }
+
+    private fun initViews(){
+        vedi_username= findViewById<TextView>(R.id.vedi)
+        tavolo1= findViewById<Button>(R.id.tavolo1)
+        tavolo2= findViewById<Button>(R.id.tavolo2)
+        tavolo3= findViewById<Button>(R.id.tavolo3)
+        tavolo4= findViewById<Button>(R.id.tavolo4)
+        tavolo5= findViewById<Button>(R.id.tavolo5)
+        tavolo6= findViewById<Button>(R.id.tavolo6)
+        tavolo7= findViewById<Button>(R.id.tavolo7)
+        tavolo8= findViewById<Button>(R.id.tavolo8)
+        tavolo9= findViewById<Button>(R.id.tavolo9)
+        tavolo10= findViewById<Button>(R.id.tavolo10)
+        tavolo11= findViewById<Button>(R.id.tavolo11)
+        tavolo12= findViewById<Button>(R.id.tavolo12)
     }
 
     private fun init_Listeners()
