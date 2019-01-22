@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import com.example.gian2.apperitivogmm.activities.OrdinaActivity
 import model.Tavolo
 import sql.DatabaseHelper
 

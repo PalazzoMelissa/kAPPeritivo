@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
-import model.CustomPietanzaAdapter
+import com.example.gian2.apperitivogmm.activities.ContoActivity
 import model.CustomPietanzaOrdinataAdapter
 import model.EditPietanzaOrdinataModel
 import model.Ordine
