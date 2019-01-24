@@ -41,7 +41,7 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         usernameFromIntent=intent.getStringExtra("USERNAME")
         initViews()
         init_Listeners()
-        vedi_username.setText("Benvenuto "+usernameFromIntent + ", seleziona il tavolo:")
+        vedi_username.text = "Benvenuto "+usernameFromIntent + ", seleziona il tavolo:"
         for(i in 0..12)
         {
             var t= Tavolo()
@@ -88,7 +88,7 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
 
     override fun onClick(view: View)
     {
-        //gestisco i click sugli TextEdit
+        //gestisco i click sui bottoni
         var tavolo= Tavolo()
 
         when (view.id) {

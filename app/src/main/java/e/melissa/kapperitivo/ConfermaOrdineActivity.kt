@@ -3,18 +3,16 @@ package e.melissa.kapperitivo
 
 import android.content.Context
 import android.content.Intent
-
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.gian2.apperitivogmm.activities.ContoActivity
-import model.*
-
+import model.EditPietanzaModel
+import model.EditPietanzaOrdinataModel
+import model.Ordine
 import sql.DatabaseHelper
 
 /**
@@ -83,7 +81,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     {
         databaseHelper= DatabaseHelper(this)
         //customPietanzaAdapter= CustomPietanzaAdapter(this,)
-        listaPietanzeScelte=getIntent().extras.getSerializable("pietanze_scelte") as ArrayList<EditPietanzaModel>
+        listaPietanzeScelte= intent.extras.getSerializable("pietanze_scelte") as ArrayList<EditPietanzaModel>
         ordine=Ordine()
 
 
@@ -94,13 +92,13 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View)
     {
         var hello=0
-        for(i in 0..pietanzaView.size-1){
+        for(i in 0 until pietanzaView.size){
             hello++
         }
         var intent= Intent(this, ContoActivity::class.java)
         //passo i due importi all'activity ContoActvity
         intent.putExtra("pietanze",pietanzaView)
-        //passo ancge codice, cameriere e tavolo
+        //passo anche codice, cameriere e tavolo
         intent.putExtra("ordine", ordine.getCodice())
         intent.putExtra("Cameriere_usrnm", cameriere)
         intent.putExtra("tavolo", tavolo)
@@ -156,18 +154,18 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
             if(convertView == null)
             {
                 var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                vi=inflater.inflate(R.layout.layout_pietanza_ordinata,null,true)
+                vi=inflater.inflate(R.layout.layout_pietanza_ordinata, null, true)
                 holder= View_Holder()
                 holder.editTextModifica = vi?.findViewById<EditText>(R.id.modifica) as EditText
                 holder.textViewNome = vi.findViewById(R.id.nome)
                 holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
                 holder.textViewQuantita = vi.findViewById(R.id.quantita)
 
-                vi?.tag = holder
+                vi.tag = holder
             }else{
                 vi=convertView
                 //getTag ritorna l'object set come un tag per la view
-                holder= vi?.tag as View_Holder
+                holder= vi.tag as View_Holder
             }
 
 
@@ -180,18 +178,19 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
                 if(!b){
                     val position=v.id
                     val editText=v as EditText
-                    pietanzeOrdinate.get(position).setModifica(editText.text.toString())
+                    pietanzeOrdinate[position].setModifica(editText.text.toString())
                 }
             }
 
 
             return vi
         }
+
         companion object VH{
             var holder=View_Holder()
         }
 
-        private  class View_Holder() {
+        private  class View_Holder {
 
             lateinit var editTextModifica: EditText
             lateinit var textViewNome: TextView

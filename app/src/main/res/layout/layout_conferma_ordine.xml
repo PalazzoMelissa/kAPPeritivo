@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -13,11 +13,9 @@
         android:id="@+id/conferma"
         style="@style/ButtonStyle"
         android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/ordine_completo"
         android:layout_marginBottom="0dp"
         android:text="@string/conferma_ordine"
         android:typeface="serif"/>
 
 
-
-</RelativeLayout>
+</LinearLayout>

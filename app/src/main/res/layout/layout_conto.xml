@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="18px"
     android:paddingRight="18px"
-    tools:context="ContoActivity">
+    tools:context="com.example.gian2.apperitivogmm.activities.ContoActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

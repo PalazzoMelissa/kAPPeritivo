@@ -35,13 +35,13 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
 
     private fun InitObjects() {
 
-        cameriere!!.setUsername(intent.getStringExtra("cameriere"))
+        cameriere.setUsername(intent.getStringExtra("cameriere"))
     }
 
 
     private fun visualizzaOrdini() {
         //ottengo il cursore con tutte le tuple degli ordini
-        val ordiniCameriere = databaseHelper!!.ordini_cameriere(cameriere)
+        val ordiniCameriere = databaseHelper.ordini_cameriere(cameriere)
         ordiniCameriere.moveToFirst()
 
         while (ordiniCameriere.moveToNext()) {
@@ -60,16 +60,16 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
             info_ordine.width = 300
             info_ordine.height = 100
             info_ordine.text = "Ordine " + ordiniCameriere.getInt(0) + " con conto €" + ordiniCameriere.getFloat(1)
-            linearLayoutVediordini!!.addView(linearLayout)
+            linearLayoutVediordini.addView(linearLayout)
             linearLayout.addView(info_ordine)
 
             //vedo tuple con codice dell'ordine
-            val pietanza_ordine = databaseHelper!!.vedi_pietanze_ordine(ordiniCameriere.getInt(0))
+            val pietanza_ordine = databaseHelper.vedi_pietanze_ordine(ordiniCameriere.getInt(0))
 
             while (pietanza_ordine.moveToNext()) {
                 //visualizzo pietanze realtive all'ordine atraverso un edit text
                 val pietanzaordinataTextView = TextView(this)
-                pietanzaordinataTextView.setText(pietanza_ordine.getString(0) + " x " + pietanza_ordine.getInt(1) + "\n" + pietanza_ordine.getString(2))
+                pietanzaordinataTextView.text = pietanza_ordine.getString(0) + " x " + pietanza_ordine.getInt(1) + "\n" + pietanza_ordine.getString(2)
                 pietanzaordinataTextView.gravity = Gravity.CENTER
                 pietanzaordinataTextView.textSize = 15f
                 pietanzaordinataTextView.setTextColor(Color.WHITE)
