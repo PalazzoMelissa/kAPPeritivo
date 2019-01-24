@@ -17,7 +17,6 @@ import sql.DatabaseHelper
  */
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
-    private val register= this
     private lateinit var registrati_button: Button
     private lateinit var username:EditText
     private lateinit var nome:EditText
@@ -25,12 +24,13 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var numeroTel:EditText
     private var cameriere= Cameriere()
 
-    private var databaseHelper= DatabaseHelper(register)
-    private var inputValidation= InputValidation(register)
+    private var databaseHelper= DatabaseHelper(this)
+    private var inputValidation= InputValidation(this)
 
 
     override fun onCreate (savedInstanceState: Bundle?)
     {
+        //avvia l'activity e imposta il layout corrispondente
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_registration)
 
@@ -40,32 +40,37 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
+    //inizializza i bottoni e gli editText
     private fun initViews()
     {
-        registrati_button = findViewById<Button>(R.id.registrati)
-        username= findViewById<EditText>(R.id.usrnm)
-        nome= findViewById<EditText>(R.id.nome)
-        cognome = findViewById<EditText>(R.id.cognome)
-        numeroTel = findViewById<EditText>(R.id.numtel)
+        registrati_button = findViewById(R.id.registrati)
+        username= findViewById(R.id.usrnm)
+        nome= findViewById(R.id.nome)
+        cognome = findViewById(R.id.cognome)
+        numeroTel = findViewById(R.id.numtel)
         numeroTel.inputType = InputType.TYPE_CLASS_NUMBER
     }
 
 
     private fun initListeners()
     {
+        //inizializza il Listener per la pressione del bottone
         registrati_button.setOnClickListener(this@RegisterActivity as View.OnClickListener)
     }
 
 
     override fun onClick(v: View)
     {
-        //mostra se la registrazione è andata a buon fine
+        //premendo il bottone si verifica se la registrazione è andata a buon fine
         if(v == registrati_button)
             postDataToSQLite()
     }
 
 
     private fun postDataToSQLite(){
+
+        //i campi dell'iscrizione devono essere tutti riempiti, altrimenti viene segnalato
+
         if(!inputValidation.isInputEditTextFilled(username)){
             Toast.makeText(applicationContext,"Inserisci un valore valido per l'username!",Toast.LENGTH_LONG).show()
             return
@@ -83,6 +88,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
 
+
+        //ultimo campo da controllare: se è stato riempito si procede con la registrazione
+        //inserendo nella variabile del cameriere e poi nel database il valore immesso nei campi
         if(!databaseHelper.checkCameriere(username.text.toString().trim()))
         {
             cameriere.setUsername(username.text.toString().trim())
@@ -91,14 +99,15 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             cameriere.setNumTel(numeroTel.text.toString().trim())
 
             databaseHelper.addCameriere(cameriere)
-            Toast.makeText(register,"Sei stato registrato con successo", Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"Sei stato registrato con successo", Toast.LENGTH_LONG).show()
             emptyInputEditText()
 
             startActivity(Intent(applicationContext, Login::class.java))
 
         }else
 
-            Toast.makeText(register,"Errore nella registrazione",Toast.LENGTH_LONG).show()
+            //non può mancare proprio l'username...
+            Toast.makeText(this,"Errore nella registrazione",Toast.LENGTH_LONG).show()
 
     }
 

@@ -204,7 +204,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
 
     fun createMenu() {
-        inserisciPietanze("INSERT OR IGNORE INTO pietanza (nome,categoria,descrizione,costo)\n" +
+        inserisciPietanze("INSERT OR IGNORE INTO pietanza (nome, categoria, descrizione, costo)\n" +
                 "VALUES " +
                 "" +
                 "('Spaghetti alle vongole', 'primo', 'Spaghetti con vongole veraci, prezzemolo, un filo di olio', 9.5),\n" +

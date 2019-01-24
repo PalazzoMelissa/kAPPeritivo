@@ -44,7 +44,7 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
         val ordiniCameriere = databaseHelper.ordini_cameriere(cameriere)
         ordiniCameriere.moveToFirst()
 
-        while (ordiniCameriere.moveToNext()) {
+        do {
             //creo layout relativo ad un'ordine
             val linearLayout = LinearLayout(this)
             linearLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -78,7 +78,7 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
 
             }
             pietanza_ordine.close()
-        }
+        }while (ordiniCameriere.moveToNext())
         ordiniCameriere.close()
 
     }

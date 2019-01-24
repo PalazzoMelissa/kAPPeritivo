@@ -4,6 +4,7 @@ import helper.InputValidation
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.view.View
@@ -12,12 +13,10 @@ import android.widget.EditText
 import android.widget.Toast
 import sql.DatabaseHelper
 
-class Login : AppCompatActivity(), View.OnClickListener {
+class Login: AppCompatActivity(), View.OnClickListener {
 
-    private var activity : AppCompatActivity? = this@Login
+    private var activity : Context? = this@Login
     private lateinit var aggiungi_profilo: Button
-
-
     private lateinit var accesso : Button
     private lateinit var username : EditText
     private lateinit var inputValidation : InputValidation
@@ -25,9 +24,10 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //avvia l'activity e imposta il layout corrispondente
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_login)
-        supportActionBar?.hide()
 
         initViews()
         initListeners()
@@ -37,16 +37,15 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
 
 
-    //inizializzo parti del form
+    //inizializza i bottoni e l'editText per inserire l'username
     private fun initViews()
     {
-        var preferences : SharedPreferences  = getPreferences(MODE_PRIVATE)
         aggiungi_profilo = findViewById(R.id.crea)
         accesso= findViewById(R.id.accedi)
         username= findViewById(R.id.username)
     }
 
-    //inizializzo bottoni
+    //inizializza i Listeners per la pressione dei bottoni
     private fun initListeners(){
         accesso.setOnClickListener(this)
         aggiungi_profilo.setOnClickListener(this)
@@ -61,11 +60,13 @@ class Login : AppCompatActivity(), View.OnClickListener {
     }
 
 
-
+    //GIAN, COSSA XEA STA ROBA?
     @SuppressLint("CommitPrefEdits")
 
 
-        override fun onPause()
+    //GIAN, COSSA XEA STA ROBA?
+    //o lo togliamo, o lo mettiamo su tutte le classi
+    override fun onPause()
         {
             super.onPause()
             var preferences : SharedPreferences = getPreferences(MODE_PRIVATE)
@@ -81,12 +82,15 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
 
         override fun onClick(view : View) {
-            //gestione casi click in uno dei due bottoni
+            //gestione del click su uno dei due bottoni
             when(view.id){
+
+                //tentativo di login: rimanda alla verifica della correttezza delle credenziali
                 R.id.accedi->{
-                    //click sul bottone di accesso all'app
                     verifyFromSQLite()
                 }
+
+                //crea il profilo del nuovo cameriere, rimandando all'apposita activity
                 R.id.crea->{
                     val intent = Intent(applicationContext, RegisterActivity::class.java)
                     startActivity(intent)
@@ -96,14 +100,15 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
         //verifica del login
         fun verifyFromSQLite(){
-            //se ho l'username vuoto, allora non eseguo
+            //se il campo username è vuoto lo segnala con un Toast, senza eseguire nessuna operazione
             if(!inputValidation.isInputEditTextFilled(username)){
                 Toast.makeText(applicationContext,"Inserisci un valore valido!", Toast.LENGTH_LONG).show()
                 return
             }
 
+            //se l'username inserito è esatto (deve essere prsente nel database) accede alla pagina di gestione
+            // passando il valore dell'username all'activity successiva
             if(databaseHelper.checkCameriere(username.text.toString().trim())){
-                //se l'username inserito è esatto accedo alla pagina di gestione, passando il valore dell'username
                 var accedi_area = Intent(activity, CameriereActivity::class.java)
                 accedi_area.putExtra("USERNAME", username.text.toString().trim())
 

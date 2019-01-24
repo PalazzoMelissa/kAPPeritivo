@@ -1,5 +1,6 @@
 package e.melissa.kapperitivo
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +15,6 @@ import sql.DatabaseHelper
  * Created by melissa on 01/01/19.
  */
 class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
-    private lateinit var cameriere_attivita :CameriereActivity
     private lateinit var vedi_username:TextView
     private lateinit var tavolo1:Button
     private lateinit var tavolo2:Button
@@ -34,10 +34,11 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
+        //avvia l'activity e impost ail layout corrispondente
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_user)
-        cameriere_attivita = this@CameriereActivity
-        databaseHelper=DatabaseHelper(cameriere_attivita)
+
+        databaseHelper=DatabaseHelper(this)
         usernameFromIntent=intent.getStringExtra("USERNAME")
         initViews()
         init_Listeners()
