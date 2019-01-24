@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.text.Editable
+
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -12,12 +12,11 @@ import e.melissa.kapperitivo.ConfermaOrdineActivity
 
 import e.melissa.kapperitivo.R
 import model.EditPietanzaModel
-import model.EditPietanzaOrdinataModel
+
 import sql.DatabaseHelper
 import kotlin.collections.ArrayList
 import android.view.LayoutInflater
 import android.widget.EditText
-import android.text.TextWatcher
 
 
 /**
@@ -146,7 +145,6 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
         {
 
             var view:View?
-            val VH: ViewHolder
             if(convertView == null)
             {
                 var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -166,13 +164,13 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
             }
 
 
-            var editPietanzaModel=pietanze[position]
+
             vh.editTextQuantita.setText(pietanze[position].getQuantita())
             vh.textViewPrezzo.text = "" + pietanze[position].getPrezzo()
             vh.textViewNome.text = "" + pietanze[position].getNomePietanza()
             vh.textViewDescrizione.text = "" + pietanze[position].getDescrizione()
             vh.editTextQuantita.id=(position)
-            //vh.editTextQuantita.addTextChangedListener(GenericTextWatcher(vh.editTextQuantita))
+
 
             vh.editTextQuantita.onFocusChangeListener = View.OnFocusChangeListener{ v, b ->
                 if(!b){
@@ -190,7 +188,7 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
         companion object VH{
             var vh=ViewHolder()
         }
-         class ViewHolder()
+         private class ViewHolder()
         {
             lateinit var editTextQuantita:EditText
             lateinit var textViewNome: TextView
@@ -200,21 +198,6 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
 
         }
 
-         inner class GenericTextWatcher  constructor( var view: View) : TextWatcher {
-
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                val position = view.id
-                val editText = view as EditText
-                pietanze[position].setQuantita(editText.text.toString())
-            }
-
-            override fun afterTextChanged(editable: Editable) {
-                val position = view.id
-                val editText = view as EditText
-                pietanze[position].setQuantita(editText.text.toString())
-            }
-        }
 
 
 

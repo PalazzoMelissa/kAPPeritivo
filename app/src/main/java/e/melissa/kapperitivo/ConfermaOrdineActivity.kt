@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -131,7 +132,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    inner class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter(){
+    private class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter(){
         private var pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel> = pietOrd
         private var context=cont
         override fun getViewTypeCount(): Int {return count}
@@ -152,48 +153,45 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
 
             var vi:View?
-            var holder: View_Holder
             if(convertView == null)
             {
-                vi=  layoutInflater.inflate(R.layout.layout_pietanza_ordinata, null, true)
-                holder= View_Holder(vi)
-                holder.editTextModifica = vi.findViewById(R.id.modifica)
+                var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                vi=inflater.inflate(R.layout.layout_pietanza_ordinata,null,true)
+                holder= View_Holder()
+                holder.editTextModifica = vi?.findViewById<EditText>(R.id.modifica) as EditText
                 holder.textViewNome = vi.findViewById(R.id.nome)
                 holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
                 holder.textViewQuantita = vi.findViewById(R.id.quantita)
 
                 vi?.tag = holder
-            }else
+            }else{
                 vi=convertView
-            //getTag ritorna l'object set come un tag per la view
+                //getTag ritorna l'object set come un tag per la view
                 holder= vi?.tag as View_Holder
+            }
+
 
             holder.editTextModifica.setText("" + pietanzeOrdinate[position].getModifica())
             holder.textViewPrezzo.text = "" + pietanzeOrdinate[position].getCosto()
             holder.textViewNome.text = ""+pietanzeOrdinate[position].getNomePietanza()
             holder.textViewQuantita.text = "" + pietanzeOrdinate[position].getQuantita()
 
-            holder.editTextModifica.addTextChangedListener(object: TextWatcher {
-                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-
+            holder.editTextModifica.onFocusChangeListener = View.OnFocusChangeListener{ v, b ->
+                if(!b){
+                    val position=v.id
+                    val editText=v as EditText
+                    pietanzeOrdinate.get(position).setModifica(editText.text.toString())
                 }
-
-                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                    pietanzeOrdinate[position].setModifica(holder.editTextModifica.text.toString())
-
-                }
-
-                override fun afterTextChanged(editable: Editable) {
-
-                }
-
-            })
+            }
 
 
             return vi
         }
+        companion object VH{
+            var holder=View_Holder()
+        }
 
-        inner  class View_Holder(view: View?) {
+        private  class View_Holder() {
 
             lateinit var editTextModifica: EditText
             lateinit var textViewNome: TextView
