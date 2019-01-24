@@ -97,7 +97,7 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
         val ordine = Ordine()
         ordine.setTavolo(tavolo)
         ordine.setCameriere(cameriere as String)
-        ordine.setConto(conto_totale as Double)
+        ordine.setConto(conto_totale )
         /*
         **inserisco l'ordine nel database e tale operazione mi restituisce il codice dell'ordine
         **essendo che l'attributo codice dell'ordine è un auto_increment

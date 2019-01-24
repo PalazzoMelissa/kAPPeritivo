@@ -30,25 +30,20 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
     private lateinit var tavolo12:Button
     private lateinit var databaseHelper:DatabaseHelper
     private lateinit var usernameFromIntent: String
+    private lateinit var buttonVediOrdini: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
-        //avvia l'activity e imposta il layout corrispondente
+        //avvia l'activity e impost ail layout corrispondente
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_user)
 
         databaseHelper=DatabaseHelper(this)
         usernameFromIntent=intent.getStringExtra("USERNAME")
-
         initViews()
         init_Listeners()
-
-        supportActionBar?.hide()
-
         vedi_username.text = "Benvenuto "+usernameFromIntent + ", seleziona il tavolo:"
-
-        //aggiunge i tavoli al database
         for(i in 0..12)
         {
             var t= Tavolo()
@@ -59,24 +54,24 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
 
     }
 
-   //inizializza elementi della View
     private fun initViews(){
-        vedi_username= findViewById(R.id.vedi)
-        tavolo1= findViewById(R.id.tavolo1)
-        tavolo2= findViewById(R.id.tavolo2)
-        tavolo3= findViewById(R.id.tavolo3)
-        tavolo4= findViewById(R.id.tavolo4)
-        tavolo5= findViewById(R.id.tavolo5)
-        tavolo6= findViewById(R.id.tavolo6)
-        tavolo7= findViewById(R.id.tavolo7)
-        tavolo8= findViewById(R.id.tavolo8)
-        tavolo9= findViewById(R.id.tavolo9)
-        tavolo10= findViewById(R.id.tavolo10)
-        tavolo11= findViewById(R.id.tavolo11)
-        tavolo12= findViewById(R.id.tavolo12)
+        vedi_username= findViewById<TextView>(R.id.vedi)
+        tavolo1= findViewById<Button>(R.id.tavolo1)
+        tavolo2= findViewById<Button>(R.id.tavolo2)
+        tavolo3= findViewById<Button>(R.id.tavolo3)
+        tavolo4= findViewById<Button>(R.id.tavolo4)
+        tavolo5= findViewById<Button>(R.id.tavolo5)
+        tavolo6= findViewById<Button>(R.id.tavolo6)
+        tavolo7= findViewById<Button>(R.id.tavolo7)
+        tavolo8= findViewById<Button>(R.id.tavolo8)
+        tavolo9= findViewById<Button>(R.id.tavolo9)
+        tavolo10= findViewById<Button>(R.id.tavolo10)
+        tavolo11= findViewById<Button>(R.id.tavolo11)
+        tavolo12= findViewById<Button>(R.id.tavolo12)
+        buttonVediOrdini=findViewById<Button>(R.id.vedi_ordini)
+
     }
 
-    //listeners per i bottoni pe rscegliere il tavolo
     private fun init_Listeners()
     {
         tavolo1.setOnClickListener(this)
@@ -91,13 +86,14 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         tavolo10.setOnClickListener(this)
         tavolo11.setOnClickListener(this)
         tavolo12.setOnClickListener(this)
+        buttonVediOrdini.setOnClickListener(this)
     }
 
 
 
     override fun onClick(view: View)
     {
-        //gestisco i click sui diversi bottoni: inserisco il numero di tavolo corrispondente all'ordine
+        //gestisco i click sui bottoni
         var tavolo= Tavolo()
 
         when (view.id) {
@@ -161,7 +157,6 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
                 ordina(tavolo)
             }
 
-            //rimanda all'activity che mostra lo storico degli fatti dal cameriere corrente
             R.id.vedi_ordini -> {
                 var intent= Intent(applicationContext, VediOrdiniActivity::class.java)
                 intent.putExtra("cameriere", usernameFromIntent)
@@ -174,7 +169,7 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
     private fun ordina(tavolo: Tavolo)
     {
         val intent = Intent(applicationContext, OrdinaActivity::class.java)
-        //passo all'activity successiva il dato relativo al tavolo da cui ho ricevuto un ordine e il cameriere che l'ha fatto
+        //passo all'activity successiva il dato relativo al tavolo da cui ho ricevuto un ordine
         intent.putExtra("Tavolo", tavolo.getNumero())
         intent.putExtra("Cameriere_usrnm", usernameFromIntent)
         //faccio partire intent

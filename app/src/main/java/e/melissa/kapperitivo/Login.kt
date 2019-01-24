@@ -60,12 +60,11 @@ class Login: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    //GIAN, COSSA XEA STA ROBA?
+
     @SuppressLint("CommitPrefEdits")
 
 
-    //GIAN, COSSA XEA STA ROBA?
-    //o lo togliamo, o lo mettiamo su tutte le classi
+
     override fun onPause()
         {
             super.onPause()

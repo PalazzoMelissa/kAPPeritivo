@@ -41,7 +41,8 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
             "  on delete no action,\n" +
             "  cameriere not null references cameriere(username)\n" +
             "  on update cascade\n" +
-            "  on delete no action\n" +
+            "  on delete no action,\n" +
+            " conto float\n" +
             ")"
 
     //inserimento della pietanza per ogni ordine
@@ -133,14 +134,14 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
-    //insetisco un ordine
+    //inserisco un ordine
     fun addOrdine(ordine: Ordine): Int
     {
         var db: SQLiteDatabase= this.writableDatabase
         var values: ContentValues= ContentValues()
-
         values.put("tavolo", ordine.getTavolo())
         values.put("cameriere", ordine.getCameriere())
+        values.put("conto",ordine.getConto());
 
         return Integer.parseInt(""+db.insert("ordine", null, values))
     }
@@ -241,10 +242,10 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
     fun vedi_pietanze_ordine(codiceOrdine: Int): Cursor
     {
-        var columns= arrayOf("pietanza", "quantita", "modifica")
+        var columns= arrayOf("pietanza", "quantita_pietanza", "modifica")
         var db= this.readableDatabase
         var selection= "ordine= ?"
-        var selectionArgs= arrayOf(codiceOrdine as String+"")
+        var selectionArgs= arrayOf(""+codiceOrdine)
         var cursor= db.query("composto", columns, selection, selectionArgs, null, null, null)
 
         return cursor

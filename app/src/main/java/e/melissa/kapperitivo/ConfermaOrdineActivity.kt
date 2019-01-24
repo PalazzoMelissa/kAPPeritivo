@@ -59,6 +59,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
             listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
         }
         catch (e: Exception){
+            Toast.makeText(this,"Ordine vuoto!!!",Toast.LENGTH_LONG).show()
             finish()
         }
 
@@ -161,11 +162,11 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
                 var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 vi=inflater.inflate(R.layout.layout_pietanza_ordinata, null, true)
                 holder= View_Holder()
-                holder.editTextModifica = vi?.findViewById(R.id.modifica) as EditText
+                holder.editTextModifica = vi.findViewById(R.id.modifica)
                 holder.textViewNome = vi.findViewById(R.id.nome)
                 holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
                 holder.textViewQuantita = vi.findViewById(R.id.quantita)
-
+                holder.editTextModifica.id=(position)
                 vi.tag = holder
             }else{
                 vi=convertView
@@ -195,7 +196,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
             var holder=View_Holder()
         }
 
-        //classe che mantiene i dati degli elementi della View //GIAN, COSSA XEA STA ROBA? è giusta la mia intuizione?
+        //classe che mantiene i dati degli elementi della View
         private  class View_Holder {
 
             lateinit var editTextModifica: EditText
