@@ -18,20 +18,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82df02a4-541d-46c1-89d5-3835d82822a9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/Login.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/OrdinaActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/OrdinaActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/RegisterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/RegisterActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/helper/InputValidation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/helper/InputValidation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kAPPeritivo" beforeDir="false" afterPath="$PROJECT_DIR$/kAPPeritivo" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,108 +49,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ConfermaOrdineActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt">
+      <file leaf-file-name="EditPietanzaModel.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
-              <folding>
-                <element signature="e#32#459#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CameriereActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContoActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ContoActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
-              <folding>
-                <element signature="e#52#403#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseHelper.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseHelper.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/Login.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="61" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="61" />
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
-                <element signature="e#31#382#0" expanded="true" />
+                <element signature="e#13#268#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterActivity.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/RegisterActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="108" column="51" selection-start-line="108" selection-start-column="51" selection-end-line="108" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InputValidation.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/helper/InputValidation.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-208">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppCompatActivity.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/appcompat-v7/26.1.0/2b34456c30d6b6e5db5fa3e8fa02f6cebd5531fd/appcompat-v7-26.1.0-sources.jar!/android/support/v7/app/AppCompatActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
-              <folding>
-                <element signature="e#4133#4134#0" expanded="true" />
-                <element signature="e#4191#4192#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VediOrdiniActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout_conferma_ordine.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_conferma_ordine.xml">
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -177,6 +86,9 @@
       <find>hello</find>
       <find>position</find>
       <find>cameriere_</find>
+      <find>vedi</find>
+      <find>gian,</find>
+      <find>&lt;Button&gt;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2576,8 +2488,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/model/CustomPietanzaOrdinataAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ContoActivity.kt" />
         <option value="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/e.melissa.kapperitivo/databases/kAPPeritivo.db" />
-        <option value="$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/OrdinaActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_conto.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/bg_circle.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/buttonstyle.xml" />
@@ -2592,13 +2502,16 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/textviewstyle.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/listviewstyle.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_conferma_ordine.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/VediOrdiniActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/Login.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/RegisterActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/OrdinaActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/helper/InputValidation.kt" />
       </list>
     </option>
   </component>
@@ -3013,18 +2926,18 @@
       <window_info anchor="right" id="Preview" order="7" />
       <window_info anchor="bottom" id="Run" order="3" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32922733" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32843137" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.109477125" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.32922733" />
       <window_info id="Captures" order="4" weight="0.32954547" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13636364" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13636364" />
       <window_info anchor="bottom" id="Build" order="0" weight="0.24836601" />
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" weight="0.3604278" />
       <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49924242" visible="true" weight="0.12745099" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49924242" weight="0.33660132" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3281075" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -3051,7 +2964,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="enac oid" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/annotation/SuppressLint.java" />
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/e/melissa/kapperitivo/ExampleInstrumentedTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -3197,13 +3109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_conto.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3307,16 +3212,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/OrdinaActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="146" column="26" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
-          <folding>
-            <element signature="e#52#509#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ContoActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -3331,16 +3226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#32#459#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3364,17 +3249,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        <state relative-caret-position="30">
+          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/RegisterActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="61" />
+        <state relative-caret-position="210">
+          <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/java/io/Serializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="169" column="64" lean-forward="true" selection-start-line="169" selection-start-column="64" selection-end-line="169" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -3389,34 +3281,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/ConfermaOrdineActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/helper/InputValidation.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="1235">
+          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
+          <folding>
+            <element signature="e#32#459#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/Login.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="61" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="61" />
+        <state relative-caret-position="225">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/OrdinaActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="185" column="9" lean-forward="true" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="9" />
           <folding>
-            <element signature="e#31#382#0" expanded="true" />
+            <element signature="e#52#439#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/RegisterActivity.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/e/melissa/kapperitivo/CameriereActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="108" column="51" selection-start-line="108" selection-start-column="51" selection-end-line="108" selection-end-column="51" />
+        <state relative-caret-position="305">
+          <caret line="176" column="125" selection-start-line="176" selection-start-column="125" selection-end-line="176" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/model/EditPietanzaModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/helper/InputValidation.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sql/DatabaseHelper.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#13#268#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

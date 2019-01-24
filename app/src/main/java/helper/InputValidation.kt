@@ -20,6 +20,7 @@ class InputValidation(cont: Context)
 
         if(value.isEmpty())
         {
+            //forse è questo che da problemi
             hideKeyboardFrom(testo)
             return false
         }
@@ -28,7 +29,7 @@ class InputValidation(cont: Context)
     }
 
 
-    //verifica esattezza formato numero telefonico
+    //verifica l'esattezza formato numero telefonico
     fun isInputTextNumTelFilled(num_tel : EditText) : Boolean
     {
         var value = num_tel.text.toString()

@@ -179,7 +179,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
-    //visualizza le pietanze in base alla tipologia
+    //visualizza le pietanze in base alla categoria richiesta usando una query
     fun vediPietanze(categoria: String): Cursor
     {
         var columns= arrayOf("nome", "costo", "descrizione", "categoria")

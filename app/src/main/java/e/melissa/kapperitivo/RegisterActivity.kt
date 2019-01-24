@@ -22,7 +22,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var nome:EditText
     private lateinit var cognome :EditText
     private lateinit var numeroTel:EditText
-    private var cameriere= Cameriere()
+    private var cameriere= Cameriere()  //memorizza i dati del cameriere che si vuole iscrivere
 
     private var databaseHelper= DatabaseHelper(this)
     private var inputValidation= InputValidation(this)
@@ -36,6 +36,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         initViews()
         initListeners()
+
+        //nasconde la toolbar con il nome dell'applicazione
+        supportActionBar?.hide()
 
     }
 
