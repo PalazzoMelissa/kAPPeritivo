@@ -2,6 +2,7 @@ package model
 
 import java.io.Serializable
 
+//GIAN, COSSA XEA STA ROBA? che tipo è questo?
 class EditPietanzaModel: Serializable {
     private var quantita= ""
     private var nomePietanza= ""
