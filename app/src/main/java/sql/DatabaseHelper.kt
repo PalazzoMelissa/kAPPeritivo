@@ -142,7 +142,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
         values.put("tavolo", ordine.getTavolo())
         values.put("cameriere", ordine.getCameriere())
 
-        return db.insert("ordine", null, values) as Int
+        return Integer.parseInt(""+db.insert("ordine", null, values))
     }
 
 
@@ -186,25 +186,11 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
         var db: SQLiteDatabase= this.writableDatabase
         var selection= "categoria= ?"
         var selectionArgs: Array<String> = arrayOf(categoria)
-        var cursor: Cursor= db.query("pietanza", columns, selection, selectionArgs, null, null, null)
+        var cursor: Cursor= db.query("pietanza", columns, selection, selectionArgs, null, null, "nome")
 
         return cursor
 
     }
-
-
-    fun conto_ordine(ordine: Ordine): Float {
-        val conto_totale = 0f
-        val db = this.readableDatabase
-        val query = "SELECT SUM(quantita_pietanza*costo) as conto from pietanza inner join composto on nome=pietanza " +
-                " where ordine=" + ordine.getCodice()
-        val conto_parziale = db.rawQuery(query, null)
-        conto_parziale.moveToFirst()
-        //conto_totale+=Float.parseFloat(conto_parziale.getString(0));
-        return conto_parziale.getFloat(0)
-
-    }
-
 
     //ricerco tutti gli ordini di un cameriere
     fun ordini_cameriere(cameriere: Cameriere): Cursor {
@@ -215,19 +201,6 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
         return db.query("ordine", columns, selection, selectionArgs, null, null, null)
     }
 
-    //calcolo del costo di una pietanza
-    fun costo_pietanza(pietanza: String, quantita_pietanza: Int, modifica: String): Float {
-        var costo = 0f
-        var db = this.readableDatabase
-        val query = "SELECT costo from pietanza where nome=$pietanza"
-        val costo_senza_aggiunte = db.rawQuery(query, null)
-        costo_senza_aggiunte.moveToFirst()
-        costo = costo_senza_aggiunte.getFloat(0) * quantita_pietanza
-        if (modifica != "") {
-            costo += 1f
-        }
-        return costo
-    }
 
 
     fun createMenu() {

@@ -1,6 +1,8 @@
 package model
 
-class EditPietanzaOrdinataModel {
+import java.io.Serializable
+
+class EditPietanzaOrdinataModel: Serializable {
     private var nomePietanza= ""
     private var quantita: Int = 0
     private var costo: Double = 0.0

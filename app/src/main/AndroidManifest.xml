@@ -26,10 +26,10 @@
             android:name="e.melissa.kapperitivo.CameriereActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="e.melissa.kapperitivo.OrdinaActivity"
+            android:name="com.example.gian2.apperitivogmm.activities.OrdinaActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="e.melissa.kapperitivo.ContoActivity"
+            android:name="com.example.gian2.apperitivogmm.activities.ContoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="e.melissa.kapperitivo.VediOrdiniActivity"

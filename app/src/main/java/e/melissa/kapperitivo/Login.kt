@@ -55,8 +55,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
     //inizializzo oggetti
     private fun initObjects()
     {
-        var databaseHelper= DatabaseHelper(this)
-        var inputValidation= InputValidation(this)
+         databaseHelper= DatabaseHelper(this)
+         inputValidation= InputValidation(this)
 
     }
 

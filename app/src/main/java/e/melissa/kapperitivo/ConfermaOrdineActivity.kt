@@ -1,16 +1,19 @@
 package e.melissa.kapperitivo
 
+
+import android.content.Context
 import android.content.Intent
+
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.ListView
-import android.widget.Toast
+import android.view.ViewGroup
+import android.widget.*
 import com.example.gian2.apperitivogmm.activities.ContoActivity
-import model.CustomPietanzaOrdinataAdapter
-import model.EditPietanzaOrdinataModel
-import model.Ordine
+import model.*
+
 import sql.DatabaseHelper
 
 /**
@@ -22,12 +25,11 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     private lateinit var cameriere: String
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var invia_ordine: Button
-
     private lateinit var customPietanzaOrdinataAdapter: CustomPietanzaOrdinataAdapter
     private lateinit var listaPietanzaOrdinate: ListView
+    private lateinit var listaPietanzeScelte: ArrayList<EditPietanzaModel>
     private lateinit var pietanzaView: ArrayList<EditPietanzaOrdinataModel>
     private lateinit var ordine: Ordine
-    //ordine da creare
 
 
 
@@ -48,14 +50,14 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         //inserisco la lista di pietanze
 
         //inserisco lista pietanze
-        try {
-          //  listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
+        try{
+            listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
         }
-        catch (e: Exception)
-        {
-            Toast.makeText(applicationContext, "Ordine vuoto!", Toast.LENGTH_SHORT).show()
+        catch (e: Exception){
             finish()
         }
+
+
 
     }
 
@@ -78,29 +80,25 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
     private fun init__Objects()
     {
+        databaseHelper= DatabaseHelper(this)
+        //customPietanzaAdapter= CustomPietanzaAdapter(this,)
+        listaPietanzeScelte=getIntent().extras.getSerializable("pietanze_scelte") as ArrayList<EditPietanzaModel>
+        ordine=Ordine()
+
 
     }
 
 
-    //
+
     override fun onClick(view: View)
     {
-        var conto_senza_modifiche= 0.0
-        var conto_modifiche= 0.0
-
-       /* for (i in 0..pietanzaView.size)
-        {
-            conto_senza_modifiche += pietanzaView[i].getCosto()* pietanzaView[i].getQuantita()
-            if(pietanzaView[i].getModifica() != (""))
-                conto_modifiche++
-        }*/
-
+        var hello=0
+        for(i in 0..pietanzaView.size-1){
+            hello++
+        }
         var intent= Intent(this, ContoActivity::class.java)
-
         //passo i due importi all'activity ContoActvity
-        intent.putExtra("conto_modifiche", conto_modifiche)
-        intent.putExtra("conto_senza-modifiche", conto_senza_modifiche)
-
+        intent.putExtra("pietanze",pietanzaView)
         //passo ancge codice, cameriere e tavolo
         intent.putExtra("ordine", ordine.getCodice())
         intent.putExtra("Cameriere_usrnm", cameriere)
@@ -110,24 +108,103 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    /*private fun getPietanzeOrdinate(): ArrayList<EditPietanzaOrdinataModel>
+    private fun getPietanzeOrdinate(): ArrayList<EditPietanzaOrdinataModel>
     {
+
+
         var editPietanzaOrdinataModelArrayList = ArrayList<EditPietanzaOrdinataModel> ()
 
-        for (i in 0..CustomPietanzaAdapter::getCount()) {
+        for (i in 0..(listaPietanzeScelte.size-1)) {
 
-            if (CustomPietanzaAdapter::pietanze:: != 0) {
-                val editPietanzaOrdinataModel = EditPietanzaOrdinataModel()
-                editPietanzaOrdinataModel.setCosto(CustomPietanzaAdapter::pietanze.get(i))
-                editPietanzaOrdinataModel.setNomePietanza(CustomPietanzaAdapter::pietanze.get(i).getNomePietanza())
-                editPietanzaOrdinataModel.setQuantita(Integer.parseInt(CustomPietanzaAdapter::pietanze.get(i).getQuantita()))
+                var editPietanzaOrdinataModel = EditPietanzaOrdinataModel()
+                editPietanzaOrdinataModel.setCosto(listaPietanzeScelte[i].getPrezzo())
+                editPietanzaOrdinataModel.setNomePietanza(listaPietanzeScelte[i].getNomePietanza())
+                editPietanzaOrdinataModel.setQuantita(Integer.parseInt(listaPietanzeScelte[i].getQuantita()))
                 editPietanzaOrdinataModel.setModifica("")
                 editPietanzaOrdinataModelArrayList.add(editPietanzaOrdinataModel)
-            }
+
+
+
         }
 
         return editPietanzaOrdinataModelArrayList
-    }*/
+    }
+
+
+    inner class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter(){
+        private var pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel> = pietOrd
+        private var context=cont
+        override fun getViewTypeCount(): Int {return count}
+
+
+        override fun getItemViewType(position: Int): Int {return position}
+
+
+        override fun getCount(): Int {return pietanzeOrdinate.size}
+
+
+        override fun getItem(position: Int): Any {return pietanzeOrdinate[position]}
+
+
+        override fun getItemId(position: Int): Long {return 0}
+
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
+
+            var vi:View?
+            var holder: View_Holder
+            if(convertView == null)
+            {
+                vi=  layoutInflater.inflate(R.layout.layout_pietanza_ordinata, null, true)
+                holder= View_Holder(vi)
+                holder.editTextModifica = vi.findViewById(R.id.modifica)
+                holder.textViewNome = vi.findViewById(R.id.nome)
+                holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
+                holder.textViewQuantita = vi.findViewById(R.id.quantita)
+
+                vi?.tag = holder
+            }else
+                vi=convertView
+            //getTag ritorna l'object set come un tag per la view
+                holder= vi?.tag as View_Holder
+
+            holder.editTextModifica.setText("" + pietanzeOrdinate[position].getModifica())
+            holder.textViewPrezzo.text = "" + pietanzeOrdinate[position].getCosto()
+            holder.textViewNome.text = ""+pietanzeOrdinate[position].getNomePietanza()
+            holder.textViewQuantita.text = "" + pietanzeOrdinate[position].getQuantita()
+
+            holder.editTextModifica.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+                }
+
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                    pietanzeOrdinate[position].setModifica(holder.editTextModifica.text.toString())
+
+                }
+
+                override fun afterTextChanged(editable: Editable) {
+
+                }
+
+            })
+
+
+            return vi
+        }
+
+        inner  class View_Holder(view: View?) {
+
+            lateinit var editTextModifica: EditText
+            lateinit var textViewNome: TextView
+            lateinit var textViewPrezzo: TextView
+            lateinit var textViewQuantita: TextView
+
+        }
+    }
+
+
+
 
 
 }

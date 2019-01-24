@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import e.melissa.kapperitivo.CameriereActivity
 
-import model.CustomPietanzaOrdinataAdapter
 import e.melissa.kapperitivo.R
+import model.EditPietanzaOrdinataModel
 import model.Ordine
 import sql.DatabaseHelper
 
@@ -28,11 +29,11 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
     //conto totale
     private var info_ordine: TextView? = null
     //conto senza modifiche
-    private var conto_senza_modifiche: Float = 0.toFloat()
+    private var conto_senza_modifiche: Double=0.toDouble()
     //conto delle modifiche
-    private var conto_modifiche: Float = 0.toFloat()
+    private var conto_modifiche=0
     //conto totale
-    private var conto_totale: Float = 0.toFloat()
+    private var conto_totale: Double=0.toDouble()
     //tavolo dell' ordine
     private var tavolo: Int = 0
     //cameriere responsabile
@@ -40,18 +41,17 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
     //buton per tornare alla scelta dei tavoli post completamento ordine
     private var torna_tavolo: Button? = null
 
+    private lateinit var pietanze:ArrayList<EditPietanzaOrdinataModel>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_conto)
+        setContentView(R.layout.layout_conto)
         //ottengo dati passati via Intent
         //ottengo conti tavolo,cameriere dalla precedente activity ConfermaOrdineActivity
-        conto_senza_modifiche = intent.getFloatExtra("conto_senza_modifiche", 0f)
-        conto_modifiche = intent.getFloatExtra("conto_modifiche", 0f)
         tavolo = intent.getIntExtra("tavolo", 0)
         cameriere = intent.getStringExtra("Cameriere_usrnm")
-        conto_totale = conto_modifiche + conto_senza_modifiche
         //inizializzo views
         initViews()
         //inizializzo listeners
@@ -86,31 +86,52 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initObjects() {
         databaseHelper = DatabaseHelper(applicationContext)
+        pietanze=getIntent().extras.getSerializable("pietanze") as ArrayList<EditPietanzaOrdinataModel>
+        calcolaContoModifiche(pietanze)
+        calcolaContoSenzaModifiche(pietanze)
+        conto_totale=conto_senza_modifiche+conto_modifiche
     }
 
     override fun onClick(view: View) {
         //creo ordine e lo inserisco nel database
         val ordine = Ordine()
         ordine.setTavolo(tavolo)
-        ordine.setCameriere(cameriere)
-        ordine.setConto(conto_totale)
+        ordine.setCameriere(cameriere as String)
+        ordine.setConto(conto_totale as Double)
         /*
         **inserisco l'ordine nel database e tale operazione mi restituisce il codice dell'ordine
         **essendo che l'attributo codice dell'ordine è un auto_increment
         */
         ordine.setCodice(databaseHelper!!.addOrdine(ordine))
         //inserisco ogni pietanza ordinata nella tabella del database composto
-        for (i in 0 until CustomPietanzaOrdinataAdapter.pietanzeOrdinate.size()) {
+        for (i in 0 .. pietanze.size-1) {
             //ottengo i diversi attributi della pietanza ordinata di indice i
-            val pietanza = CustomPietanzaOrdinataAdapter.pietanzeOrdinate.get(i).getNomePietanza()
-            val quantita = CustomPietanzaOrdinataAdapter.pietanzeOrdinate.get(i).getQuantita()
-            val modifica = CustomPietanzaOrdinataAdapter.pietanzeOrdinate.get(i).getModifica()
+            val pietanza = pietanze.get(i).getNomePietanza() as String
+            val quantita = pietanze.get(i).getQuantita()
+            val modifica = pietanze.get(i).getModifica() as String
             //aggiungo tale pietanza ordinata, la quantita, e le possibili modifiche al database nella tabella composto
             databaseHelper!!.addComposto(ordine, pietanza, quantita, modifica)
         }
         val intent = Intent(this@ContoActivity, CameriereActivity::class.java)
         intent.putExtra("USERNAME", cameriere)
         startActivity(intent)
+    }
+
+
+    //calcolo conto senza modifiche
+    private fun calcolaContoSenzaModifiche(arrayEditPietanzaOrdinataModel: ArrayList<EditPietanzaOrdinataModel>){
+        for (i in 0..arrayEditPietanzaOrdinataModel.size-1)
+        {
+            conto_senza_modifiche += (arrayEditPietanzaOrdinataModel[i].getCosto()* arrayEditPietanzaOrdinataModel[i].getQuantita())
+
+        }
+    }
+
+    private fun calcolaContoModifiche(arrayEditPietanzaOrdinataModel: ArrayList<EditPietanzaOrdinataModel>){
+        for(i in 0..arrayEditPietanzaOrdinataModel.size-1){
+            if(arrayEditPietanzaOrdinataModel[i].getModifica() !="")
+            conto_modifiche++
+        }
     }
 
 

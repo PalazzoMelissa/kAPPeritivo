@@ -11,7 +11,7 @@ import android.widget.BaseAdapter
 import android.widget.EditText
 import android.widget.TextView
 import e.melissa.kapperitivo.R
-
+/*
 class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter(){
     var pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel> = pietOrd
     private var context= cont
@@ -32,10 +32,11 @@ class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietan
     override fun getItemId(position: Int): Long {return 0}
 
 
-    override fun getView(position: Int, convertView: View, parent: ViewGroup): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
 
         var holder: View_Holder
-        var vi= convertView
+        var vi:View?
+        vi=convertView
 
         if(vi == null)
         {
@@ -43,20 +44,20 @@ class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietan
             var inflater= context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             vi= inflater.inflate(R.layout.layout_pietanza_ordinata, null, true)
 
-            holder.editTextModifica = convertView.findViewById(R.id.modifica)
-            holder.textViewNome = convertView.findViewById(R.id.nome)
-            holder.textViewPrezzo = convertView.findViewById(R.id.prezzo)
-            holder.textViewQuantita = convertView.findViewById(R.id.quantita)
+            holder.editTextModifica = vi.findViewById(R.id.modifica)
+            holder.textViewNome = vi.findViewById(R.id.nome)
+            holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
+            holder.textViewQuantita = vi.findViewById(R.id.quantita)
 
-            convertView.tag = holder
+            convertView?.tag = holder
         }else
         //getTag ritorna l'object set come un tag per la view
             holder= vi.tag as View_Holder
 
-        holder.editTextModifica.setText("" + pietanzeOrdinate[position].getQuantita())
-        holder.textViewPrezzo.text = "" + pietanzeOrdinate[position].getCosto()
-        holder.textViewNome.text = ""+pietanzeOrdinate[position].getNomePietanza()
-        holder.textViewQuantita.text = "" + pietanzeOrdinate[position].getQuantita()
+        holder.editTextModifica.setText("" + pietanzeOrdinate[position].modifica)
+        holder.textViewPrezzo.text = "" + pietanzeOrdinate[position].costo
+        holder.textViewNome.text = ""+pietanzeOrdinate[position].nomePietanza
+        holder.textViewQuantita.text = "" + pietanzeOrdinate[position].quantita
 
         holder.editTextModifica.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
@@ -64,7 +65,7 @@ class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietan
             }
 
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                pietanzeOrdinate[position].setModifica(holder.editTextModifica.text.toString())
+                pietanzeOrdinate[position].quantita=Integer.parseInt(holder.editTextModifica.text.toString())
 
             }
 
@@ -86,4 +87,4 @@ class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietan
         lateinit var textViewQuantita: TextView
 
     }
-}
+}*/
