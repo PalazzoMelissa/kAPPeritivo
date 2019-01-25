@@ -11,6 +11,7 @@ import model.Cameriere
 import sql.DatabaseHelper
 import android.content.Intent
 import android.widget.Button
+import android.widget.Toast
 
 /**
  * Scopi :
@@ -36,7 +37,13 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
         InitViews()
         InitListeners()
         InitObjects()
-        visualizzaOrdini()
+        try{
+            visualizzaOrdini()
+        }
+        catch (e:Throwable){
+            finish()
+            Toast.makeText(this,"Nessun ordine presente",Toast.LENGTH_LONG).show()
+        }
 
         supportActionBar?.hide()
 
