@@ -46,7 +46,7 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         supportActionBar?.hide()
 
         //testo di benvenuto al cameriere he ha eseguito il login
-        vedi_username.text = "Benvenuto "+usernameFromIntent + ", seleziona il tavolo:"
+        vedi_username.text = "Benvenuto "+usernameFromIntent + "\nseleziona il tavolo:"
 
         //insetisce nel database i 12 tavoli presenti in sala
         for(i in 0..12)

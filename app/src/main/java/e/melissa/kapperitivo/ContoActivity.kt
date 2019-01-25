@@ -49,6 +49,8 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
         //inizializzo oggetti
         initObjects()
 
+        supportActionBar?.hide()
+
         //inserisco stringa per info dell'ordine
         info_ordine!!.text = "Ordine  del cameriere $cameriere \nal tavolo $tavolo"
         conto_modificheTextView!!.text = "Importo modifiche: € $conto_modifiche"

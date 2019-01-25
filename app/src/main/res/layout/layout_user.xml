@@ -16,10 +16,11 @@
         <TextView
             android:id="@+id/vedi"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:textColor="#FFF"
-            android:textSize="15dp" />
+            android:textSize="30dp" />
 
 
         <Button
