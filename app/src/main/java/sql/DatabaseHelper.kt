@@ -237,7 +237,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
 
 
-    //tra tutt gli ordini mostra tutte le pietanze con la quantità e modifica con lo stesso numero di ordine
+    //tra tutti gli ordini mostra tutte le pietanze con la quantità e modifica con lo stesso numero di ordine
     fun vedi_pietanze_ordine(codiceOrdine: Int): Cursor
     {
         var columns= arrayOf("pietanza", "quantita_pietanza", "modifica")
