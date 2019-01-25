@@ -12,20 +12,16 @@ import model.Tavolo
 /**
  * Created by melissa on 09/01/19.
  */
-//open class SQLiteOpenHelper(context: Context, DATABASE_NAME: Int, factory: SQLiteDatabase.CursorFactory, DATABASE_VERSION : Int)
+//classe che aiuta nella gestione del database
 class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.db", null, 1) {
 
-    //dati utenti iscritti
-    private val COLUMN_USERNAME = "username"
-    private val TABLE_CAMERIERE = "Cameriere"
-    private val COlUMN_NOME = "nome"
-    private val COlUMN_COGNOME = "cognome"
-    private val COlUMN_NUM_TELEFONO = "num_telefono"
-
-    //creazione del cameriere con i dati inseriti
-    private val CREATE_TABLE_CAMERIERE = "CREATE TABLE if not exists  " + TABLE_CAMERIERE + "(" +
-            COLUMN_USERNAME + " varchar(100) not null primary key, " + COlUMN_NOME + " varchar(50) not null, " +
-            COlUMN_COGNOME + " varchar(50) not null, " + COlUMN_NUM_TELEFONO + " varchar(10) not null)"
+    //creazione del cameriere con i suoi dati
+    private val CREATE_TABLE_CAMERIERE = "CREATE TABLE if not exists Cameriere (\n"+
+            "username varchar(100) not null primary key, \n" +
+            "nome varchar(50) not null, \n" +
+            "cognome varchar(50) not null, \n" +
+            "num_telefono varchar(10) not null\n"+
+    ")"
 
 
     //inserimento tavoli
@@ -33,7 +29,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
             "  numero int not null primary key" +
             ")"
 
-    //ordine completo
+    //tabella degli ordini
     private val CREATE_TABLE_ORDINE = "CREATE TABLE if not exists ordine(\n" +
             "  codice int auto_increment  primary key,\n" +
             "  tavolo int references tavolo(numero)\n" +
@@ -89,34 +85,35 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
+    //aggiunge una tupla alla tabella cameriere
     fun addCameriere(cameriere : Cameriere)
     {
-        var db : SQLiteDatabase = this@DatabaseHelper.getWritableDatabase()
+        var db : SQLiteDatabase = this@DatabaseHelper.writableDatabase
         var values= ContentValues()
 
-        values.put(COLUMN_USERNAME, cameriere.getUsername())
-        values.put(COlUMN_NOME, cameriere.getNome())
-        values.put(COlUMN_COGNOME, cameriere.getCognome())
-        values.put(COlUMN_NUM_TELEFONO, cameriere.getNumTel())
+        values.put("username", cameriere.getUsername())
+        values.put("nome", cameriere.getNome())
+        values.put("cognome", cameriere.getCognome())
+        values.put("num_telefono", cameriere.getNumTel())
 
-        db.insert(TABLE_CAMERIERE, null, values)
+        db.insert("Cameriere", null, values)
 
     }
 
-    //ricerco il cameriere
+    //verifico se il cameriere con un dato username è registrato
     fun checkCameriere(username: String): Boolean
     {
         //query di ricerca
         var columns= arrayOf("username")
 
-        var db: SQLiteDatabase= this.getWritableDatabase()
-        var selection: String= COLUMN_USERNAME + " =?"
+        var db: SQLiteDatabase= this.writableDatabase
+        var selection: String= "username =?"
 
         var selectionArgs=arrayOf(username)
-        var cursor: Cursor= db.query(TABLE_CAMERIERE, columns, selection, selectionArgs, null, null, null)
+        var cursor: Cursor= db.query("Cameriere", columns, selection, selectionArgs, null, null, null)
 
         //conto quanti camerieri ho trovato
-        var camerieri_trovati: Int= cursor.getCount()
+        var camerieri_trovati: Int= cursor.count
         cursor.close()
 
         //dice se ha trovato o meno il cameriere cercato
@@ -126,7 +123,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
 
 
-    //inserisco una pietanza tramite stringa SQL
+    //inserisco una pietanza tramite stringa SQL nel database
     fun inserisciPietanze(pietanze: String)
     {
         var db: SQLiteDatabase= this.writableDatabase
@@ -134,14 +131,14 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
-    //inserisco un ordine
+    //inserisco un ordine nella tabella
     fun addOrdine(ordine: Ordine): Int
     {
         var db: SQLiteDatabase= this.writableDatabase
-        var values: ContentValues= ContentValues()
+        var values= ContentValues()
         values.put("tavolo", ordine.getTavolo())
         values.put("cameriere", ordine.getCameriere())
-        values.put("conto",ordine.getConto());
+        values.put("conto",ordine.getConto())
 
         return Integer.parseInt(""+db.insert("ordine", null, values))
     }
@@ -168,7 +165,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
-    //aggiungo pietanza ad un ordine
+    //aggiungo la pietanza ad un ordine
     fun addComposto(ordine: Ordine, pietanza: String, quantita: Int, modifica: String): Int {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -180,7 +177,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
-    //visualizza le pietanze in base alla categoria richiesta usando una query
+    //ricerca tramite query le pietanze in base alla categoria richiesta
     fun vediPietanze(categoria: String): Cursor
     {
         var columns= arrayOf("nome", "costo", "descrizione", "categoria")
@@ -193,7 +190,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
     }
 
-    //ricerco tutti gli ordini di un cameriere
+    //ricerco tutti gli ordini di un dato cameriere
     fun ordini_cameriere(cameriere: Cameriere): Cursor {
         var columns = arrayOf("codice", "conto")
         var db = this.readableDatabase
@@ -203,7 +200,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     }
 
 
-
+    //inserimento di tutte le pietanze del menù nel database
     fun createMenu() {
         inserisciPietanze("INSERT OR IGNORE INTO pietanza (nome, categoria, descrizione, costo)\n" +
                 "VALUES " +
@@ -240,6 +237,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
 
 
+    //tra tutt gli ordini mostra tutte le pietanze con la quantità e modifica con lo stesso numero di ordine
     fun vedi_pietanze_ordine(codiceOrdine: Int): Cursor
     {
         var columns= arrayOf("pietanza", "quantita_pietanza", "modifica")
@@ -250,9 +248,5 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
         return cursor
     }
-
-
-
-
 
 }

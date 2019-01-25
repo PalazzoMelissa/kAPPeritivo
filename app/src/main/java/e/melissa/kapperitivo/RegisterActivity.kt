@@ -114,7 +114,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    fun emptyInputEditText()
+    private fun emptyInputEditText()
     {
         username.text = null
         nome.text = null

@@ -3,7 +3,7 @@ package model
 /**
  * Created by melissa on 09/01/19.
  */
-class Cameriere  {
+class Cameriere {
 
     private var username= ""
     private var nome= ""

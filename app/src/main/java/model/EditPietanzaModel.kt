@@ -2,7 +2,7 @@ package model
 
 import java.io.Serializable
 
-//GIAN, COSSA XEA STA ROBA? che tipo è questo?
+//tipo di oggetto complesso che può essere passato tra un'activity e un'altra
 class EditPietanzaModel: Serializable {
     private var quantita= ""
     private var nomePietanza= ""

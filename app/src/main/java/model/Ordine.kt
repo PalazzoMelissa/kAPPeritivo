@@ -25,11 +25,7 @@ class Ordine {
 
     fun getCameriere(): String {return cameriere}
 
-    fun setConto(conto: Double) {
-        this.conto = conto
-    }
+    fun setConto(conto: Double) {this.conto = conto}
 
-    fun getConto(): Double {
-        return conto
-    }
+    fun getConto(): Double {return conto}
 }

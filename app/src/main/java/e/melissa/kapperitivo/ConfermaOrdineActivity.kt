@@ -96,12 +96,6 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View)
     {
-        //GIAN, COSSA XEA STA ROBA? a cosa serve hello? che tanto dopo non lo usi più
-        var hello=0
-        for(i in 0 until pietanzaView.size){
-            hello++
-        }
-
         //comincia l'activity del Conto
         // vengono passati il codice dell'ordine, la lista delle pietanze, l'username del cameriere e il numero del tavolo
         var intent= Intent(this, ContoActivity::class.java)
