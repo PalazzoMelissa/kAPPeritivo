@@ -14,6 +14,10 @@ import model.EditPietanzaModel
 import model.EditPietanzaOrdinataModel
 import model.Ordine
 import sql.DatabaseHelper
+import android.text.Editable
+import android.text.TextWatcher
+
+
 
 /**
  * Created by melissa on 01/01/19.
@@ -38,8 +42,8 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_conferma_ordine)
 
-        //recupera username del cameriere e il numero del tavolo  //GIAN, COSSA XEA STA ROBA?  e ste graffe a cosa servono?
-        cameriere = intent.getStringExtra("cameriere").toString().trim { it <= ' ' }
+        //recupera username del cameriere e il numero del tavolo
+        cameriere = intent.getStringExtra("cameriere").toString().trim()
         tavolo = intent.getIntExtra("tavolo", 0)
 
         init__Views()
@@ -58,7 +62,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
         try{
             listaPietanzaOrdinate.adapter = customPietanzaOrdinataAdapter
         }
-        catch (e: Exception){
+        catch (e:Throwable){
             Toast.makeText(this,"Ordine vuoto!!!",Toast.LENGTH_LONG).show()
             finish()
         }
@@ -96,6 +100,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View)
     {
+
         //comincia l'activity del Conto
         // vengono passati il codice dell'ordine, la lista delle pietanze, l'username del cameriere e il numero del tavolo
         var intent= Intent(this, ContoActivity::class.java)
@@ -163,8 +168,8 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
                 holder= View_Holder()
                 holder.editTextModifica = vi.findViewById(R.id.modifica)
                 holder.textViewNome = vi.findViewById(R.id.nome)
-                holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
                 holder.textViewQuantita = vi.findViewById(R.id.quantita)
+                holder.textViewPrezzo = vi.findViewById(R.id.prezzo)
                 holder.editTextModifica.id=(position)
                 vi.tag = holder
             }else{
@@ -178,26 +183,31 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
             holder.textViewPrezzo.text = "" + pietanzeOrdinate[position].getCosto()
             holder.textViewNome.text = ""+pietanzeOrdinate[position].getNomePietanza()
             holder.textViewQuantita.text = "" + pietanzeOrdinate[position].getQuantita()
+            holder.editTextModifica.id=position
 
-            //in caso cambi editText , allora salvo il valore della editTextModificata precedentemente
-            /*
-            * v=View relativa ad un ediTextModifica di una pietanza ordinata
-            * b= boolean che controlla se cambio editText
-             */
-            holder.editTextModifica.onFocusChangeListener = View.OnFocusChangeListener{ v, b ->
-                if(!b){
-                    val position=v.id
-                    val editText=v as EditText
-                    pietanzeOrdinate[position].setModifica(editText.text.toString())
+            //salvo modifiche in caso ne vengano scritte su un EditText
+            holder.editTextModifica.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
                 }
-            }
+
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                    pietanzeOrdinate[position].setModifica(holder.editTextModifica.text.toString())
+
+                }
+
+                override fun afterTextChanged(editable: Editable) {
+
+                }
+            })
+
 
             return vi
         }
 
 
         //classe con componenti grafici interni alla view
-        private  class View_Holder {
+        private class View_Holder {
 
             lateinit var editTextModifica: EditText
             lateinit var textViewNome: TextView

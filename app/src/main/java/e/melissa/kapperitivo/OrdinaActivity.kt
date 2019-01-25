@@ -140,7 +140,7 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
         override fun getItemId(position: Int): Long {return 0}
 
 
-        //GIAN, COSSA XEA STA ROBA? cosa fa esattamente questoa funz?
+        //funzione per inserire la pietanza attraverso un componente grafico
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View?
         {
 
@@ -170,10 +170,14 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
             vh.textViewPrezzo.text = "" + pietanze[position].getPrezzo()
             vh.textViewNome.text = "" + pietanze[position].getNomePietanza()
             vh.textViewDescrizione.text = "" + pietanze[position].getDescrizione()
-            vh.editTextQuantita.id=(position)
+            vh.editTextQuantita.id=position
 
 
-            //GIAN, COSSA XEA STA ROBA? cosa fa sta cosa?
+            //in caso cambi editText , allora salvo il valore della editTextQuantita precedente
+            /*
+            * v=View relativa ad un ediTextModifica di una pietanza ordinata
+            * b= boolean che controlla se cambio editText
+             */
             vh.editTextQuantita.onFocusChangeListener = View.OnFocusChangeListener{ v, b ->
                 if(!b){
                     val position=v.id
@@ -187,7 +191,7 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
         }
 
 
-        //classe che mantiene i dati delgli elementi della View //GIAN, COSSA XEA STA ROBA? è giusta la mia intuizione?
+        //classe per inserire le parti grafiche relative alla pietanza nella view
          private class ViewHolder {
             lateinit var editTextQuantita:EditText
             lateinit var textViewNome: TextView

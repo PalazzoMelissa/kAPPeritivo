@@ -53,9 +53,9 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
         //inserisco stringa per info dell'ordine
         info_ordine!!.text = "Ordine  del cameriere $cameriere \nal tavolo $tavolo"
-        conto_modificheTextView!!.text = "Importo modifiche: € $conto_modifiche"
-        conto_senza_modificheTextView!!.text = "Importo parziale: € $conto_senza_modifiche"
-        conto_totaleTextView!!.text = "Importo totale: € $conto_totale"
+        conto_modificheTextView.text = "Importo modifiche: € $conto_modifiche"
+        conto_senza_modificheTextView.text = "Importo parziale: € $conto_senza_modifiche"
+        conto_totaleTextView.text = "Importo totale: € $conto_totale"
 
 
     }

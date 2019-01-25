@@ -103,7 +103,12 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
                 val pietanzaordinataTextView = TextView(this)
                 pietanzaordinataTextView.gravity = Gravity.CENTER
                 pietanzaordinataTextView.setBackgroundColor(getColor(R.color.colorAccent))
-                pietanzaordinataTextView.text = ""+pietanza_ordine.getInt(1) + " x " + pietanza_ordine.getString(0)  + "\n" + pietanza_ordine.getString(2)
+                var pietanza_modifica="hello"
+                if (pietanza_ordine.getString(2)!=(""))
+                    {
+                        pietanza_modifica+="\n--> " + pietanza_ordine.getString(2)
+                    }
+                pietanzaordinataTextView.text = ""+pietanza_ordine.getInt(1) + " x " + pietanza_ordine.getString(0) +pietanza_modifica
                 pietanzaordinataTextView.gravity = Gravity.CENTER
                 pietanzaordinataTextView.textSize = 15f
                 pietanzaordinataTextView.setTextColor(Color.WHITE)
