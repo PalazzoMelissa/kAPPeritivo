@@ -31,7 +31,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
 
     //tabella degli ordini
     private val CREATE_TABLE_ORDINE = "CREATE TABLE if not exists ordine(\n" +
-            "  codice int auto_increment  primary key,\n" +
+            "  codice  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  tavolo int references tavolo(numero)\n" +
             "  on update cascade\n" +
             "  on delete no action,\n" +
@@ -242,7 +242,7 @@ class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.
     {
         var columns= arrayOf("pietanza", "quantita_pietanza", "modifica")
         var db= this.readableDatabase
-        var selection= "ordine= ?"
+        var selection= "ordine=?"
         var selectionArgs= arrayOf(""+codiceOrdine)
         var cursor= db.query("composto", columns, selection, selectionArgs, null, null, null)
 

@@ -145,15 +145,16 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
         {
 
             var view:View?
+            var vh:ViewHolder
             if(convertView == null)
             {
                 var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 view=inflater.inflate(R.layout.layout_pietanza,null,true)
                 vh=ViewHolder()
-                vh.editTextQuantita=view?.findViewById(R.id.quantita) as EditText
-                vh.textViewDescrizione= view.findViewById(R.id.descrizione) as TextView
-                vh.textViewPrezzo= view.findViewById(R.id.prezzo) as TextView
-                vh.textViewNome= view.findViewById(R.id.nome) as TextView
+                vh.editTextQuantita=view?.findViewById<TextView>(R.id.quantita) as EditText
+                vh.textViewDescrizione= view.findViewById<TextView>(R.id.descrizione) as TextView
+                vh.textViewPrezzo= view.findViewById<TextView>(R.id.prezzo) as TextView
+                vh.textViewNome= view.findViewById<TextView>(R.id.nome) as TextView
                 vh.editTextQuantita.id=(position)
                 view.tag =vh
 
@@ -185,9 +186,6 @@ class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
             return view
         }
 
-        companion object VH{
-            var vh=ViewHolder()
-        }
 
         //classe che mantiene i dati delgli elementi della View //GIAN, COSSA XEA STA ROBA? è giusta la mia intuizione?
          private class ViewHolder {
