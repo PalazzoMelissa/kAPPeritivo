@@ -19,28 +19,17 @@ import sql.DatabaseHelper
 
 class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var databaseHelper: DatabaseHelper? = null
-    //textView per vedere il conto senza modifiche
-    private var conto_senza_modificheTextView: TextView? = null
-    //textView per vedere il conto totale
-    private var conto_totaleTextView: TextView? = null
-    //textView per vedere il conto delle modifiche
-    private var conto_modificheTextView: TextView? = null
-    //conto totale
-    private var info_ordine: TextView? = null
-    //conto senza modifiche
-    private var conto_senza_modifiche: Double=0.toDouble()
-    //conto delle modifiche
-    private var conto_modifiche=0
-    //conto totale
-    private var conto_totale: Double=0.toDouble()
-    //tavolo dell' ordine
-    private var tavolo: Int = 0
-    //cameriere responsabile
-    private var cameriere: String? = null
-    //buton per tornare alla scelta dei tavoli post completamento ordine
-    private var torna_tavolo: Button? = null
-
+    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var conto_senza_modificheTextView: TextView  //textView per vedere il conto senza modifiche
+    private lateinit var conto_totaleTextView: TextView//textView per vedere il conto totale
+    private lateinit var conto_modificheTextView: TextView//textView per vedere il conto delle modifiche
+    private lateinit var info_ordine: TextView    //conto totale
+    private var conto_senza_modifiche: Double=0.0 //conto senza modifiche
+    private var conto_modifiche=0.0 //conto delle modifiche
+    private var conto_totale: Double=0.0 //conto totale
+    private var tavolo: Int = 0 //tavolo dell' ordine
+    private lateinit var cameriere: String //cameriere responsabile
+    private lateinit var torna_tavolo: Button //button per tornare alla scelta dei tavoli post completamento ordine
     private lateinit var pietanze:ArrayList<EditPietanzaOrdinataModel>
 
 
@@ -49,27 +38,29 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_conto)
         //ottengo dati passati via Intent
-        //ottengo conti tavolo,cameriere dalla precedente activity ConfermaOrdineActivity
+        //conti tavolo, cameriere dalla precedente activity (ConfermaOrdineActivity)
         tavolo = intent.getIntExtra("tavolo", 0)
         cameriere = intent.getStringExtra("Cameriere_usrnm")
+
         //inizializzo views
         initViews()
         //inizializzo listeners
         initListeners()
         //inizializzo oggetti
         initObjects()
+
         //inserisco stringa per info dell'ordine
         info_ordine!!.text = "Ordine  del cameriere $cameriere \nal tavolo $tavolo"
         conto_modificheTextView!!.text = "Importo modifiche: € $conto_modifiche"
         conto_senza_modificheTextView!!.text = "Importo parziale: € $conto_senza_modifiche"
-        conto_totaleTextView!!.text = "Importo totale : € $conto_totale"
+        conto_totaleTextView!!.text = "Importo totale: € $conto_totale"
 
 
     }
 
 
     private fun initViews() {
-        //inizializzo tutti i componenti del Layout
+        //inizializza tutti i componenti del Layout
         conto_totaleTextView = findViewById(R.id.conto_totale)
         conto_senza_modificheTextView = findViewById(R.id.conto_senza_modifiche)
         conto_modificheTextView = findViewById(R.id.conto_modifiche)
@@ -78,7 +69,7 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initListeners() {
-        //assoccio listener al Button
+        //associo listener al Button
         torna_tavolo!!.setOnClickListener(this)
 
     }
@@ -86,7 +77,7 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initObjects() {
         databaseHelper = DatabaseHelper(applicationContext)
-        pietanze=getIntent().extras.getSerializable("pietanze") as ArrayList<EditPietanzaOrdinataModel>
+        pietanze= intent.extras.getSerializable("pietanze") as ArrayList<EditPietanzaOrdinataModel>
         calcolaContoModifiche(pietanze)
         calcolaContoSenzaModifiche(pietanze)
         conto_totale=conto_senza_modifiche+conto_modifiche
@@ -100,7 +91,7 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
         ordine.setConto(conto_totale )
         /*
         **inserisco l'ordine nel database e tale operazione mi restituisce il codice dell'ordine
-        **essendo che l'attributo codice dell'ordine è un auto_increment
+        **sfruttando il fatto che l'attributo codice dell'ordine è un auto_increment
         */
         ordine.setCodice(databaseHelper!!.addOrdine(ordine))
         //inserisco ogni pietanza ordinata nella tabella del database composto
