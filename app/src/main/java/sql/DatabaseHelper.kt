@@ -10,9 +10,14 @@ import model.Ordine
 import model.Tavolo
 
 /**
- * Created by melissa on 09/01/19.
+ * Scopi :
+ * >Interazioni con il database
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ *@version : 1.0
+ *
  */
-//classe che aiuta nella gestione del database
+
 class DatabaseHelper (context: Context): SQLiteOpenHelper(context, "kAPPeritivo.db", null, 1) {
 
     //creazione del cameriere con i suoi dati

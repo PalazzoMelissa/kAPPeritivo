@@ -12,7 +12,14 @@ import sql.DatabaseHelper
 import android.content.Intent
 import android.widget.Button
 
-
+/**
+ * Scopi :
+ * > Visualizzazione storico ordine del profilo corrente
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ * @version : 1.0
+ *
+ */
 class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
 
     private lateinit var databaseHelper: DatabaseHelper
@@ -44,7 +51,7 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
         buttonTornaTavoli=findViewById<View>(R.id.torna_tavoli) as Button
 
     }
-
+    //inizializzo listeners bottoni
     private fun InitListeners() {
         buttonTornaTavoli.setOnClickListener(this)
     }

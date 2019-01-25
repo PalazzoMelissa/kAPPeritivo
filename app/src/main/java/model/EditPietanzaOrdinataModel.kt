@@ -1,7 +1,7 @@
 package model
 
 import java.io.Serializable
-
+//Utlizzo Serializable per poter passare tale oggetto attraverso Intent
 class EditPietanzaOrdinataModel: Serializable {
     private var nomePietanza= ""
     private var quantita: Int = 0

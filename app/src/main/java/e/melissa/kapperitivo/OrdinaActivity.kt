@@ -12,11 +12,15 @@ import e.melissa.kapperitivo.ConfermaOrdineActivity
 import e.melissa.kapperitivo.R
 import model.EditPietanzaModel
 import sql.DatabaseHelper
-
-
 /**
- * Created by gian2 on 02/08/2018.
+ * Scopi :
+ * > Scegliere le pietanze richieste dal cliente  e la relativa quantità
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ * @version : 1.0
+ *
  */
+
 
 class OrdinaActivity : AppCompatActivity(), View.OnClickListener {
 

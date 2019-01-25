@@ -18,9 +18,14 @@ import android.text.Editable
 import android.text.TextWatcher
 
 
-
 /**
- * Created by melissa on 01/01/19.
+ * Scopi :
+ * > Visualizzare riepologo dell'ordine  prima della conferma
+ * > Aggiungere eventuali modifiche
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ * @version : 1.0
+ *
  */
 class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
@@ -33,7 +38,6 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     private lateinit var listaPietanzeScelte: ArrayList<EditPietanzaModel>
     private lateinit var pietanzaView: ArrayList<EditPietanzaOrdinataModel>
     private lateinit var ordine: Ordine
-
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -71,7 +75,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    //inizializza le listView e il bottone
+    //inizializza parte grafica
     private fun init__Views()
     {
         invia_ordine= findViewById(R.id.conferma)

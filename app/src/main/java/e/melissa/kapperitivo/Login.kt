@@ -12,7 +12,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import sql.DatabaseHelper
-
+/**
+ * Scopi :
+ * > Effettuare accesso al portale
+ * > Accesso alla registrazione di un nuovo profilo
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ * @version : 1.0
+ *
+ */
 class Login: AppCompatActivity(), View.OnClickListener {
 
     private var activity : Context? = this@Login

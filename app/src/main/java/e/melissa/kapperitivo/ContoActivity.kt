@@ -14,9 +14,16 @@ import model.Ordine
 import sql.DatabaseHelper
 
 /**
- * Created by gian2 on 14/01/2019.
- */
-
+* Scopi :
+* > Visualizzare conto delle modifiche
+* > Visualizzare conto senza modifiche
+ * >Visualizzare conto totale
+ * > Conferma ordine e ritorna a selezione tavolo
+*
+*@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+* @version : 1.0
+*
+*/
 class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var databaseHelper: DatabaseHelper
@@ -60,7 +67,7 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-
+    //inizializza parte grafica
     private fun initViews() {
         //inizializza tutti i componenti del Layout
         conto_totaleTextView = findViewById(R.id.conto_totale)
@@ -119,7 +126,7 @@ class ContoActivity : AppCompatActivity(), View.OnClickListener {
 
         }
     }
-
+    //calcolo conto modifiche
     private fun calcolaContoModifiche(arrayEditPietanzaOrdinataModel: ArrayList<EditPietanzaOrdinataModel>){
         for(i in 0..arrayEditPietanzaOrdinataModel.size-1){
             if(arrayEditPietanzaOrdinataModel[i].getModifica() !="")

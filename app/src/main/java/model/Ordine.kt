@@ -1,8 +1,6 @@
 package model
 
-/**
- * Created by melissa on 09/01/19.
- */
+
 class Ordine {
 
     private var codice=0

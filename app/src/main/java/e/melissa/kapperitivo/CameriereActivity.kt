@@ -11,9 +11,14 @@ import model.Tavolo
 import sql.DatabaseHelper
 
 /**
- * Created by melissa on 01/01/19.
+ * Scopi : Selezionare il tavolo per effettuare un'ordine, accedere allo storico di ordini effettuati
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ *@version : 1.0
+ *
  */
 class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
+    //dichiarazione button relativi ai tavoli
     private lateinit var vedi_username:TextView
     private lateinit var tavolo1:Button
     private lateinit var tavolo2:Button
@@ -27,8 +32,11 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
     private lateinit var tavolo10:Button
     private lateinit var tavolo11:Button
     private lateinit var tavolo12:Button
+    //oggetto per iterazioni con database
     private lateinit var databaseHelper:DatabaseHelper
+    //username cameriere loggato
     private lateinit var usernameFromIntent: String
+    //button per visualizzazione storico ordini
     private lateinit var buttonVediOrdini: Button
 
 
@@ -38,11 +46,11 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_user)
 
-        databaseHelper=DatabaseHelper(this)
         usernameFromIntent=intent.getStringExtra("USERNAME")
 
         initViews()
-        init_Listeners()
+        initListeners()
+        initObjects()
         supportActionBar?.hide()
 
         //testo di benvenuto al cameriere he ha eseguito il login
@@ -59,7 +67,7 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
 
     }
 
-    //inizializza i bottoni e la textView
+    //inizializza parte grafica
     private fun initViews(){
         vedi_username= findViewById(R.id.vedi)
         tavolo1= findViewById(R.id.tavolo1)
@@ -79,7 +87,7 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
     }
 
     //inizializza i listener dei bottoni
-    private fun init_Listeners()
+    private fun initListeners()
     {
         tavolo1.setOnClickListener(this)
         tavolo2.setOnClickListener(this)
@@ -94,6 +102,11 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         tavolo11.setOnClickListener(this)
         tavolo12.setOnClickListener(this)
         buttonVediOrdini.setOnClickListener(this)
+    }
+
+    //inizializzo oggetti
+    private fun initObjects(){
+        databaseHelper= DatabaseHelper(this)
     }
 
 
@@ -173,7 +186,10 @@ class CameriereActivity: AppCompatActivity(), View.OnClickListener  {
         }
     }
 
-
+    /*
+    * metodo : ordina( tavolo: Tavolo)
+    * tavolo : Tavolo   -->tavolo che sarà usato per eseguire l'ordine
+     */
     private fun ordina(tavolo: Tavolo)
     {
         //passa all'activity successiva il dato relativo al tavolo da cui ho ricevuto un ordine e il cameriere che l'ha fatto

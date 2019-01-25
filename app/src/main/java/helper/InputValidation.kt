@@ -7,7 +7,12 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 /**
- * Created by melissa on 09/01/19.
+ * Scopi :
+ * >Controllo dei dati inseriti campi per la registrazione
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ *@version : 1.0
+ *
  */
 class InputValidation(cont: Context)
 {

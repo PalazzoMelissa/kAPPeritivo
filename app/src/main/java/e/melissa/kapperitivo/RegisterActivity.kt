@@ -13,7 +13,12 @@ import model.Cameriere
 import sql.DatabaseHelper
 
 /**
- * Created by melissa on 01/01/19.
+ * Scopi :
+ * > Registrazione di un nuovo profilo utente
+ *
+ *@authors Gianluca Giacometti, Melissa Palazzo, Marco Bonavoglia
+ * @version : 1.0
+ *
  */
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -54,7 +59,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         numeroTel.inputType = InputType.TYPE_CLASS_NUMBER
     }
 
-
+    //inizializzo listeners button
     private fun initListeners()
     {
         //inizializza il Listener per la pressione del bottone
