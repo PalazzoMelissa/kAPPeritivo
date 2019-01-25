@@ -13,7 +13,7 @@
         android:id="@+id/vedi_ordini"
         android:orientation="vertical">
         <Button
-            android:id="@+id/conferma"
+            android:id="@+id/torna_tavoli"
             style="@style/ButtonStyle"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="0dp"

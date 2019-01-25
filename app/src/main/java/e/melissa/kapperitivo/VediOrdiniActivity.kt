@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import model.Cameriere
 import sql.DatabaseHelper
+import android.content.Intent
+import android.widget.Button
 
 
 class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
@@ -17,6 +19,7 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
     //cameriere di cui visualizzerò gli ordini
     private lateinit var cameriere: Cameriere
     private lateinit var linearLayoutVediordini: LinearLayout
+    private lateinit var buttonTornaTavoli : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,7 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_vedi_ordini)
         InitViews()
+        InitListeners()
         InitObjects()
         visualizzaOrdini()
 
@@ -32,17 +36,17 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    override fun onClick(v: View?) {
 
-    }
 
     //inizializza gli elementi della view
     private fun InitViews() {
         linearLayoutVediordini = findViewById<View>(R.id.vedi_ordini) as LinearLayout
+        buttonTornaTavoli=findViewById<View>(R.id.torna_tavoli) as Button
 
     }
 
     private fun InitListeners() {
+        buttonTornaTavoli.setOnClickListener(this)
     }
 
 
@@ -52,6 +56,12 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
         databaseHelper = DatabaseHelper(this)
         cameriere=Cameriere()
         cameriere.setUsername(intent.getStringExtra("cameriere"))
+    }
+
+    override fun onClick(view: View) {
+        val intent = Intent(applicationContext, CameriereActivity::class.java)
+        intent.putExtra("USERNAME", cameriere.getUsername())
+        startActivity(intent)
     }
 
 
@@ -91,11 +101,13 @@ class VediOrdiniActivity: AppCompatActivity(), View.OnClickListener {
                 //formato di visualizzazione: quantità x nomePietanza
                 //                            eventuale modifica
                 val pietanzaordinataTextView = TextView(this)
-                pietanzaordinataTextView.text = pietanza_ordine.getInt(1) as String + " x " + pietanza_ordine.getString(0)  + "\n" + pietanza_ordine.getString(2)
+                pietanzaordinataTextView.gravity = Gravity.CENTER
+                pietanzaordinataTextView.setBackgroundColor(getColor(R.color.colorAccent))
+                pietanzaordinataTextView.text = ""+pietanza_ordine.getInt(1) + " x " + pietanza_ordine.getString(0)  + "\n" + pietanza_ordine.getString(2)
                 pietanzaordinataTextView.gravity = Gravity.CENTER
                 pietanzaordinataTextView.textSize = 15f
                 pietanzaordinataTextView.setTextColor(Color.WHITE)
-                pietanzaordinataTextView.setPadding(0, 0, 0, 5)
+                pietanzaordinataTextView.setPadding(0, 0, 0, 1)
                 linearLayout.addView(pietanzaordinataTextView)
 
             }while(pietanza_ordine.moveToNext())

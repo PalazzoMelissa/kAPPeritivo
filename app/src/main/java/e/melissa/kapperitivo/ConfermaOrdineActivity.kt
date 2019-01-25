@@ -48,7 +48,7 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
         supportActionBar?.hide()
 
-        //ottiene la lista di componenti grafici relativi a pietanze ordinate
+        //ottiene la lista di pietanze ordinate
         pietanzaView = getPietanzeOrdinate()
         //inizializzo Adapter per inserire tutte le diverse pietanze ordinate nella ListView
         customPietanzaOrdinataAdapter = CustomPietanzaOrdinataAdapter(this, pietanzaView)
@@ -137,12 +137,15 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
     }
 
 
-    //classe per gestire le pietanze ordinate
+    //classe per gestire la visione grafica delle pietanze ordinate
+    //attraverso delle view che verranno inserite in una ListView
     private class CustomPietanzaOrdinataAdapter(cont: Context, pietOrd: ArrayList<EditPietanzaOrdinataModel>): BaseAdapter()
     {
+        //array delle pietanze ordinate
         private var pietanzeOrdinate: ArrayList<EditPietanzaOrdinataModel> = pietOrd
         private var context=cont
 
+        //override metodi baseadpater
         override fun getViewTypeCount(): Int {return count}
 
         override fun getItemViewType(position: Int): Int {return position}
@@ -153,10 +156,12 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
 
         override fun getItemId(position: Int): Long {return 0}
 
-        //GIAN, COSSA XEA STA ROBA?
+        //ritorno pietanza in forma grafica
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
 
             var vi:View?
+            var holder:View_Holder
+            //creo view dove visualizzare tutti i componenti della grafica della pietanza ordinata
             if(convertView == null)
             {
                 var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -180,7 +185,11 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
             holder.textViewNome.text = ""+pietanzeOrdinate[position].getNomePietanza()
             holder.textViewQuantita.text = "" + pietanzeOrdinate[position].getQuantita()
 
-            //GIAN, COSSA XEA STA ROBA?
+            //in caso cambi editText , allora salvo il valore della editTextModificata precedentemente
+            /*
+            * v=View relativa ad un ediTextModifica di una pietanza ordinata
+            * b= boolean che controlla se cambio editText
+             */
             holder.editTextModifica.onFocusChangeListener = View.OnFocusChangeListener{ v, b ->
                 if(!b){
                     val position=v.id
@@ -192,11 +201,8 @@ class ConfermaOrdineActivity: AppCompatActivity(), View.OnClickListener {
             return vi
         }
 
-        companion object VH{
-            var holder=View_Holder()
-        }
 
-        //classe che mantiene i dati degli elementi della View
+        //classe con componenti grafici interni alla view
         private  class View_Holder {
 
             lateinit var editTextModifica: EditText
